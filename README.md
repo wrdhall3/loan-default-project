@@ -3,22 +3,17 @@
 <h1 style="font-size: 3em;">Predicting Loan Default</h1>  
 <h2 style="font-size: 2em;">A Machine Learning Model and Analysis</h2>
 
-<img src="images/peso_usd2.png" alt="USD to MXN Analysis" style="width:100%; height:500px; object-fit:cover;">
+<img src="images/bank_loan_intro.png" alt="Bank Loans Using Machine Learning" style="width:100%; height:500px; object-fit:cover;">
 
 </div>
 
 ---
 
-Executive Summary
+## Executive Summary
 
-Project 2 uses machine learning (ML) applied to the Loan Default Prediction 
-dataset from Kaggle.  Classification models are used in supervised learning to 
-predict loan defaults.  Examples of these models include Logistic Regression, 
-Random Forest, and others.  Techniques like encoding, oversampling, 
-feature engineering, and model tuning are applied to each model to improve 
-predictive results and identify loans that are likely to default. Lenders need 
-to reduce potential loan defaults to maintain financial health and stay in 
-business.
+This project leverages machine learning (ML) techniques to predict loan defaults using the Loan Default Prediction dataset from Kaggle. By applying classification models such as Logistic Regression, Random Forest, and others, the project aims to identify high-risk loans effectively. 
+
+Advanced methods, including feature engineering, data encoding, oversampling, and model optimization, are employed to enhance predictive accuracy. These techniques help lenders proactively mitigate the risk of loan defaults, ensuring financial stability and sustained business success.
 
 ---
 
