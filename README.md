@@ -325,14 +325,35 @@ These observations reflect the trade-offs inherent in imbalanced classification 
 
 ## Visualizations
 
-## 1. Chart
+### 1. XGBoost Model Performance
 
+The charts below provide an overall picture of the work done with XGBoost across different approaches to handle the class imbalance in the dataset. Each approach's impact on accuracy, precision, recall, and F1-score is compared, alongside a confusion matrix showing the results of the best-performing model.
 
-**Observations**
+#### Performance Metrics Comparison
+![XGBoost Performance Comparison](images/best_xg_boost_nosamp_smote_scalepos_smoteen.png)
 
+- **Accuracy Comparison**: The accuracy decreases slightly when using resampling techniques (e.g., SMOTE and SMOTEENN) compared to no sampling, as these techniques aim to improve recall rather than prioritize accuracy.
+- **Recall Comparison**: The best recall for identifying defaults (Class 1) is achieved using **Scale Pos Weight**, significantly outperforming other methods, including SMOTE and SMOTEENN.
+- **Precision Comparison**: No sampling results in higher precision, but this comes at the cost of poor recall.
+- **F1-Score Comparison**: **Scale Pos Weight** provides a balanced trade-off between precision and recall, making it the most effective approach for handling defaults.
 
+#### Confusion Matrix for Best Model (Scale Pos Weight)
+![Confusion Matrix - Scale Pos Weight](images/xg_boost_scaleposweight.png)
+
+- The confusion matrix for **Scale Pos Weight** demonstrates a strong ability to identify defaults:
+  - **True Positives (Defaults correctly identified)**: 5,493.
+  - **False Negatives (Defaults missed)**: 3,403.
+  - **True Negatives (Non-defaults correctly identified)**: 49,725.
+  - **False Positives (Non-defaults misclassified)**: 17,984.
+- While there is a moderate number of false positives, the significant improvement in true positives justifies the trade-off, especially given the business goal of minimizing loan defaults.
+
+---
 
 ### Summary:
+The visualizations clearly indicate that **Scale Pos Weight** is the most effective method for handling imbalanced data when using XGBoost. It provides the highest recall, ensuring that more defaulters are correctly identified, which aligns with the business objective of minimizing bad loans. Although precision decreases slightly, the overall F1-score demonstrates a balanced performance, making it the preferred approach for this dataset.
+
+These insights are critical for lenders, as they highlight the importance of recall in identifying risky loans, even at the cost of accepting a higher number of false positives.
+
 ---
 
 
