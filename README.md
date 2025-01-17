@@ -194,93 +194,69 @@ configured correctly with the required dependencies.
 
 ## Methodology
 
-To select the best classification model and preprocessing, we employed a
- systematic approach to analyze the given loan dataset. Here’s a breakdown of
-  our methodology:
+To identify the best classification model and preprocessing approach, we followed a systematic methodology to analyze the loan dataset. Below is an outline of the steps taken:
 
 ### 1. **Data Collection and Preparation**
-- We accessed a prepared single dataset fom Kaggle used in a Cousera 
-challenge.  There are 18 column names or column headers and 255,347 records.
-This dataset is based on the borrower's financial status at the point of loan application.
+- The dataset was sourced from Kaggle's Loan Default Prediction Dataset and contains **255,347 records** across **18 columns**.
+- The data represents the borrower's financial status at the point of loan application.
+- The `LoanID` column (a unique identifier) was removed as it had no predictive value.
 
 ### 2. **Exploratory Data Analysis (EDA)**
-- Histograms are made for column names to see the distribution of the values.
-- Column averages and other statistics are used to determine the data distribution.  
-- There were no missing values.  There are 18 column names.  
-- The first column or column 0 is called LoanID and was removed since it did
-not provide any predictive value.  
-- There were no apparent outliers as the dataset was carefully curated.
-- The dataset could be synthetic or carefully selected based on real world
-data. 
-- X represents the features of the dataset.  Excluding the LoanID feature,
-X is represented by 16 features (columns).  There are 9 numerical features
-and 7 categorical features.  The features are fairly balanced.
-- y represents the target variable, 1 for default and 0 for non-default.  y is
-imbalanced.  About 11.6% of the dataset is default and 88.4% non-default.
+- **Descriptive Statistics**: Histograms and statistical summaries were generated to examine the distribution of numerical and categorical features.
+- **Missing Values**: The dataset had no missing values.
+- **Outliers**: No apparent outliers, indicating that the data may have been curated or synthetically generated.
+- **Features**:
+  - Excluding `LoanID`, the dataset has **16 features**: **9 numerical** and **7 categorical**.
+  - The target variable `Default` is imbalanced:
+    - **Non-defaults (0)**: 88.4%.
+    - **Defaults (1)**: 11.6%.
 
-### 3. **Featue Engineering and Correlation**
-- A correlation matrix was run on the numerical features in X and y.  The
-correlations to y or default were low.  The highest correlations were Age at
--0.168 and InterestRate at 0.131.
-- In feature engineering, three new features (or columns) were created based
-on existing data.  The were Financial_Obligations based on HasMortgage and
-HasDependents.  LoanAmountToIncome Ratio and TotalDebtToIncome Ratio were
-also created.  None had any significant correlations to default and were not
-used.
+### 3. **Feature Engineering and Correlation Analysis**
+- A correlation matrix was computed for numerical features to identify relationships with `Default`:
+  - The strongest correlations were **Age** (-0.168) and **InterestRate** (0.131).
+- New features were created to explore additional relationships:
+  - `Financial_Obligations`: Combined `HasMortgage` and `HasDependents`.
+  - `LoanAmountToIncomeRatio` and `TotalDebtToIncomeRatio`: Ratios derived from existing features.
+  - None of the new features showed significant correlation with `Default` and were excluded.
 
 ### 4. **Data Cleaning and Processing**
-   
-- In machine learning using the test_train_fit function from the scikit-learn
-library, X is the feature set and includes columns 2 to 17.  y is column 18 
-or the last column.  It is the column name Default and represents the
-target variable.  Its value is either 1 for default and 0 for non-default.
-- The X contains numerical columns and they are standarized so that large 
-values in one column do not skew the results from low values in other columns.
-- The X contains categorical columns.  They are encoded to prepare the data 
-for machine learning.  OrdinalEncoder is applied to Education and provides a
-hierarchy.  For example, a PhD is bettr than a High School degree.  The
-OneHotEncoder is applied to the other categorical columns.
--  After encoding and standarization, five classification models are run.  The classification_reports are printed to compare predictive results. 
-   
-- The y or target variable is heavily imbalanced.  y=1 or default represenets 
-about 12% of total records and y=0 or non-default represents 88%.  The y=1 is
-oversampled to compensate for its minority state.  Sampling techniques used
-were undersampler, oversampler, SMOTE and SMOTEENN.
-- For the most part, sampling improved the results in the 5 classification
-models.  With each iteration, the classification_report is printed to see if 
-there is any predictive improvement.
-- The goal was to increase the recall.  The tradeoff is that accuracy
-decreased and precision decreased even more.  
-
+- **Feature Scaling**:
+  - Numerical columns were standardized to prevent large values from dominating smaller ones.
+- **Encoding**:
+  - OrdinalEncoder was applied to `Education` to impose a hierarchy (e.g., PhD > High School).
+  - OneHotEncoder was used for other categorical columns.
+- **Imbalanced Target Handling**:
+  - The target variable `Default` was heavily imbalanced. Sampling techniques were employed:
+    - **Oversampling** (SMOTE).
+    - **Undersampling**.
+    - **Combined Resampling** (SMOTEENN).
+- **Model Training**:
+  - Five classification models were trained: Logistic Regression, Random Forest, Decision Tree, KNN, and XGBoost.
+  - For each model, `classification_report` was used to evaluate metrics such as accuracy, precision, and recall.
 
 ### 5. **Analysis**
-- Since the data is imbalanced, the main focus is on improving recall to 
-catch as many defaulter as possible, even if it means reducing precision.  
-The challenge is to balance recall, precision, and accuracy to avoid
-rejecting too many good loans while still identifying defaulters effectively.
-- The classification_report is printed for each model iteration.  While
-improvements are made in the model, it is difficult to determine the best
-model.
-- The business analysis is based on creating a loan portfolio based on the
-predicted non-defaults.  From the confusion table, we can calculate the
-actual defaults.  A net positive yield is required after funding cost to be a
-viable and ongoing concern.
+- **Focus on Recall**: Since the data is imbalanced, priority was given to improving recall (identifying as many defaulters as possible) at the cost of reduced precision and accuracy.
+- **Model Evaluation**:
+  - Iterative improvements were assessed using the confusion matrix and classification reports.
+  - Balancing recall and precision was critical to ensuring both financial and operational feasibility.
+- **Business Analysis**:
+  - Predicted non-default loans were considered for approval, and predicted defaults were denied.
+  - A net positive yield (interest income from good loans minus losses from bad loans and funding costs) was the primary business objective.
 
-### 6. **Visualization and Analysis of Findings**
-- Refer to excel spreadsheet in the folder for calculations used below.
-- Two analysis charts before and after.
-- The confusion table is a tool used to evaluate the performance of a 
-classification model.  It summarizes the result of predictions made by the 
-model against the actual outcome.
-- The predicted outcomes of non-default are used to make prospective loans. 
-The predicted outcomes of default are denied loans.  
-- Assuming the above loans are made, we know if they actually default or not.
-We can calculate the interest income on actual good loans and write-off the
-actual bad loans.  The yield of the portfolio minus the cost of funds 
-provide the net yield.
-- If net yield is positive, the lender is profitable.  If the net yield is
-negative, the lender is not profitable.  It is no longer a viable business.
-A positive net yield of 1.50% can support an ongoing and healthy business
+### 6. **Visualization and Findings**
+- Visualizations, including confusion matrices and performance charts, were created to compare model results.
+- **Confusion Matrix**: Evaluated the performance of each model by summarizing predictions against actual outcomes.
+- **Portfolio Analysis**:
+  - Predicted outcomes were used to construct a loan portfolio:
+    - **Good loans** (correctly predicted non-defaults) generate interest income.
+    - **Bad loans** (missed defaults) result in write-offs.
+  - A net positive yield of at least **1.50%** ensures business sustainability.
+  - If the yield is negative, the financial model becomes non-viable.
+
+---
+
+This methodology provided a robust framework for analyzing loan defaults, enabling the selection of models that balance recall, precision, and accuracy to meet business objectives effectively.
+
 ---
 
 ## Key Observations
