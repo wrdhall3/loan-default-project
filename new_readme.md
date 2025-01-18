@@ -278,7 +278,7 @@ This methodology provided a robust framework for analyzing loan defaults, enabli
 
 ---
 
-## Key Observations
+# Key Observations
 
 ### Logistic Regression Model
 1. **Imbalanced Dataset**:
@@ -290,214 +290,206 @@ This methodology provided a robust framework for analyzing loan defaults, enabli
      - Non-defaults correctly identified: 56,270 (true negatives).
      - Missed defaulters: 7,187 (false negatives).
      - Incorrectly flagged non-defaults: 140 (false positives).
-2. **Random Undersampling**:
-   - **Metrics**: Precision: 22%, Recall: 69%, Accuracy: 68%.
-   - **Strengths**: Significantly improved recall for defaulters.
+2. **Undersampling**:
+   - **Metrics**: Precision: 23%, Recall: 68.7%, Accuracy: 68.4%, F1-Score: 34%.
+   - **Strengths**: Significantly improved recall for defaulters, making it effective at identifying high-risk loans.
    - **Weaknesses**: Trade-off in precision and increased false positives.
    - **Confusion Matrix**:
-     - Defaults correctly identified: 5,142 (true positives).
-     - Non-defaults correctly identified: 37,950 (true negatives).
+     - Defaults correctly identified: 5,102 (true positives).
+     - Non-defaults correctly identified: 39,102 (true negatives).
+     - Missed defaulters: 2,325 (false negatives).
+     - Incorrectly flagged non-defaults: 17,308 (false positives).
 
 ---
 
 ### Decision Tree Model
 1. **Imbalanced Dataset**:
-   - **Metrics**: Precision: 35%, Recall: 20%, Accuracy: 85%.
-   - **Strengths**: Improved recall over Logistic Regression.
-   - **Weaknesses**: Moderate precision and accuracy.
+   - **Metrics**: Precision: 35%, Recall: 20%, Accuracy: 85%, F1-Score: 26%.
+   - **Strengths**: Moderate recall improvement over Logistic Regression.
+   - **Weaknesses**: Precision and accuracy were affected due to imbalance.
    - **Confusion Matrix**:
      - Defaults correctly identified: 1,779 (true positives).
      - Non-defaults correctly identified: 65,671 (true negatives).
-2. **SMOTE Resampling**:
-   - **Metrics**: Precision: 31%, Recall: 45%, Accuracy: 80%.
+     - Missed defaulters: 7,211 (false negatives).
+     - Incorrectly flagged non-defaults: 2,912 (false positives).
+2. **Oversampling**:
+   - **Metrics**: Precision: 31%, Recall: 45%, Accuracy: 80%, F1-Score: 37%.
    - **Strengths**: Balanced dataset improved recall significantly.
    - **Weaknesses**: Increased false positives reduced precision.
    - **Confusion Matrix**:
-     - Defaults correctly identified: 4,003 (true positives).
-     - Non-defaults correctly identified: 58,900 (true negatives).
+     - Defaults correctly identified: 4,905 (true positives).
+     - Non-defaults correctly identified: 39,076 (true negatives).
+     - Missed defaulters: 2,522 (false negatives).
+     - Incorrectly flagged non-defaults: 17,334 (false positives).
 
 ---
 
 ### Random Forest Model
 1. **Imbalanced Dataset**:
-   - **Metrics**: Precision: 58%, Recall: 11%, Accuracy: 87.9%.
+   - **Metrics**: Precision: 58%, Recall: 11%, Accuracy: 87.9%, F1-Score: 18%.
    - **Strengths**: High precision and overall accuracy.
-   - **Weaknesses**: Low recall limits its ability to identify defaulters.
+   - **Weaknesses**: Recall remains very low, limiting its ability to identify defaulters.
    - **Confusion Matrix**:
      - Defaults correctly identified: 988 (true positives).
      - Non-defaults correctly identified: 67,000 (true negatives).
-2. **SMOTEENN Resampling**:
-   - **Metrics**: Precision: 25%, Recall: 57%, Accuracy: 75%.
+     - Missed defaulters: 7,970 (false negatives).
+     - Incorrectly flagged non-defaults: 1,000 (false positives).
+2. **Oversampling**:
+   - **Metrics**: Precision: 26%, Recall: 66%, Accuracy: 73%, F1-Score: 37%.
    - **Strengths**: Balanced dataset significantly improved recall.
    - **Weaknesses**: Increased false positives reduced precision and accuracy.
    - **Confusion Matrix**:
-     - Defaults correctly identified: 5,070 (true positives).
-     - Non-defaults correctly identified: 52,000 (true negatives).
+     - Defaults correctly identified: 4,905 (true positives).
+     - Non-defaults correctly identified: 39,076 (true negatives).
+     - Missed defaulters: 2,522 (false negatives).
+     - Incorrectly flagged non-defaults: 17,334 (false positives).
 
 ---
 
 ### KNN Classifier
 1. **Imbalanced Dataset**:
-   - **Metrics**: Precision: 44%, Recall: 7%, Accuracy: 86%.
-   - **Strengths**: Moderate precision.
-   - **Weaknesses**: Very low recall limits defaulter identification.
+   - **Metrics**: Precision: 44%, Recall: 7%, Accuracy: 86%, F1-Score: 12%.
+   - **Strengths**: Moderate precision but very low recall limits effectiveness.
    - **Confusion Matrix**:
      - Defaults correctly identified: 678 (true positives).
      - Non-defaults correctly identified: 66,800 (true negatives).
-2. **SMOTE Resampling**:
-   - **Metrics**: Precision: 29%, Recall: 49%, Accuracy: 79%.
-   - **Strengths**: Improved recall with balanced dataset.
-   - **Weaknesses**: Increased false positives reduced precision.
+     - Missed defaulters: 7,980 (false negatives).
+     - Incorrectly flagged non-defaults: 1,000 (false positives).
+2. **Undersampling**:
+   - **Metrics**: Precision: 18%, Recall: 62.6%, Accuracy: 65%, F1-Score: 28%.
+   - **Strengths**: Recall improved with undersampling.
+   - **Weaknesses**: Significant increase in false positives, reducing precision.
    - **Confusion Matrix**:
-     - Defaults correctly identified: 4,358 (true positives).
-     - Non-defaults correctly identified: 58,010 (true negatives).
+     - Defaults correctly identified: 4,649 (true positives).
+     - Non-defaults correctly identified: 35,309 (true negatives).
+     - Missed defaulters: 2,778 (false negatives).
+     - Incorrectly flagged non-defaults: 21,101 (false positives).
 
 ---
 
 ### XGBoost Classifier
 1. **Imbalanced Dataset**:
-   - **Metrics**: Precision: 54%, Recall: 9%, Accuracy: 88.5%.
+   - **Metrics**: Precision: 54%, Recall: 9%, Accuracy: 88.5%, F1-Score: 15%.
    - **Strengths**: High precision and overall accuracy.
-   - **Weaknesses**: Low recall limits identification of defaulters.
+   - **Weaknesses**: Low recall limits its ability to identify defaulters.
    - **Confusion Matrix**:
      - Defaults correctly identified: 801 (true positives).
      - Non-defaults correctly identified: 66,971 (true negatives).
-2. **SMOTE Resampling**:
-   - **Metrics**: Precision: 41%, Recall: 16%, Accuracy: 87.6%.
-   - **Strengths**: Improved recall with balanced dataset.
-   - **Weaknesses**: Reduced precision and slightly lower accuracy.
-3. **Tuned Hyperparameters**:
-   - **Optimized Parameters**:
-     - `colsample_bytree`: 0.8, `learning_rate`: 0.2, `max_depth`: 7.
-   - **Metrics**: Precision: 34%, Recall: 26%, Accuracy: 85%.
-   - **Strengths**: Balanced performance across metrics.
+     - Missed defaulters: 7,980 (false negatives).
+     - Incorrectly flagged non-defaults: 1,000 (false positives).
+2. **Undersampling**:
+   - **Metrics**: Precision: 21%, Recall: 67.3%, Accuracy: 69%, F1-Score: 32%.
+   - **Strengths**: Balanced performance with improved recall.
+   - **Weaknesses**: Increased false positives.
    - **Confusion Matrix**:
-     - Defaults correctly identified: 2,544 (true positives).
-     - Non-defaults correctly identified: 69,210 (true negatives).
+     - Defaults correctly identified: 4,994 (true positives).
+     - Non-defaults correctly identified: 38,165 (true negatives).
+     - Missed defaulters: 2,433 (false negatives).
+     - Incorrectly flagged non-defaults: 18,245 (false positives).
 
 ---
 
 ## Summary of Models:
-1. **Best Recall**: XGBoost with SMOTEENN (57%).
-2. **Best Overall Balance**: XGBoost with tuned hyperparameters (Precision: 34%, Recall: 26%).
+1. **Best Model Overall**: Logistic Regression with Undersampling:
+   - **Metrics**: Precision: 23%, Recall: 68.7%, Accuracy: 68.4%, F1-Score: 34%.
+   - **Reason**: Achieved the best balance between recall and precision while maintaining acceptable accuracy.
+2. **Best Recall**: Logistic Regression with Undersampling (68.7%).
 3. **Trade-offs**:
-   - Resampling techniques like SMOTE and SMOTEENN significantly improve recall but increase false positives.
-   - Hyperparameter tuning balances precision and recall effectively.
+   - Models like XGBoost with undersampling provided comparable recall but suffered from lower precision and increased false positives.
+   - KNN and Random Forest underperformed in terms of both precision and recall, despite moderate accuracy improvements.
 
-The optimal model depends on whether minimizing false negatives or achieving balanced performance is prioritized. XGBoost emerges as the top performer for both recall and balanced metrics.
+### Final Recommendation:
+Logistic Regression with Undersampling is the most effective model for this task, given its balanced metrics and ability to identify a higher proportion of defaulters without sacrificing too much precision or accuracy.
 
----
 
 ## Visualizations
 
 ### Model Performance Comparisons
 
-The following charts and confusion matrices showcase the performance of various models tested during the project. Each model is evaluated under different techniques (e.g., no sampling, SMOTE, SMOTEENN, and hyperparameter tuning) to handle the class imbalance present in the dataset. The models compared include Logistic Regression, Decision Tree, Random Forest, KNN, and XGBoost.
+The following charts and confusion matrices showcase the performance of various models tested during the project. Each model is evaluated under different techniques (e.g., undersampling and oversampling) to handle the class imbalance present in the dataset. The models compared include Logistic Regression, Decision Tree, Random Forest, KNN, and XGBoost.
 
 ---
 
-### 1. Logistic Regression
+### 1. Logistic Regression (Best Model)
 
 #### **Performance Metrics Comparison**
-![Logistic Regression Performance](images/logistic_regression_performance.png)
+- **Undersampling**:
+  - **Precision**: 23%
+  - **Recall**: 68.7%
+  - **Accuracy**: 68.4%
+  - **F1-Score**: 34%
+  - **Key Strengths**: Achieved the best recall among all models while maintaining a good balance between precision and F1-score. This makes it the most effective model for identifying high-risk loans.
+  - **Key Weaknesses**: Increased false positives due to the focus on improving recall.
 
-- **Baseline Performance (No Sampling)**:
-  - **Accuracy**: High accuracy (~88.9%) due to the model's success in predicting the majority class (non-defaults). However, recall for defaults is very low.
-  - **Precision**: Moderate (63%), indicating reasonable reliability in identifying defaulters.
-  - **Recall**: Poor (3%), missing the majority of actual defaulters.
-  - **F1-Score**: Reflects poor balance between precision and recall.
-
-- **Random Undersampling**:
-  - **Recall Improvement**: Recall increases to 69%, significantly improving the model's ability to identify defaults.
-  - **Precision Trade-off**: Precision drops to 22%, introducing more false positives.
-  - **Accuracy**: Decreases to 68%, reflecting the trade-off for better recall.
-
-#### **Confusion Matrix for Logistic Regression (Random Undersampling)**
-![Logistic Regression Confusion Matrix](images/logistic_regression_confusion_matrix.png)
+#### **Confusion Matrix for Logistic Regression (Undersampling)**
+![Logistic Regression Confusion Matrix](images/logistic_regression_undersampling_confusion_matrix.png)
 
 ---
 
 ### 2. Decision Tree
 
 #### **Performance Metrics Comparison**
-![Decision Tree Performance](images/decision_tree_performance.png)
+- **Oversampling**:
+  - **Precision**: 31%
+  - **Recall**: 45%
+  - **Accuracy**: 80%
+  - **F1-Score**: 37%
+  - **Key Strengths**: Improved recall through oversampling, capturing a significant proportion of defaults.
+  - **Key Weaknesses**: Moderate precision due to a higher rate of false positives.
 
-- **Baseline Performance (No Sampling)**:
-  - **Accuracy**: Moderate (~85%).
-  - **Precision**: Low (35%), indicating more false positives.
-  - **Recall**: Slightly better than Logistic Regression at 20%, but still insufficient.
-
-- **SMOTE Resampling**:
-  - **Recall Boost**: Recall improves to 45%, capturing more defaults.
-  - **Precision Trade-off**: Precision drops to 31%, indicating an increase in false positives.
-  - **Accuracy**: Slightly reduced to ~80%.
-
-#### **Confusion Matrix for Decision Tree (SMOTE Resampling)**
-![Decision Tree Confusion Matrix](images/decision_tree_confusion_matrix.png)
+#### **Confusion Matrix for Decision Tree (Oversampling)**
+![Decision Tree Confusion Matrix](images/decision_tree_oversampling_confusion_matrix.png)
 
 ---
 
 ### 3. Random Forest
 
 #### **Performance Metrics Comparison**
-![Random Forest Performance](images/random_forest_performance.png)
+- **Oversampling**:
+  - **Precision**: 26%
+  - **Recall**: 66%
+  - **Accuracy**: 73%
+  - **F1-Score**: 37%
+  - **Key Strengths**: Balanced performance with strong recall improvement.
+  - **Key Weaknesses**: Increased false positives, reducing precision and overall accuracy.
 
-- **Baseline Performance (No Sampling)**:
-  - **Accuracy**: High (87.9%), but biased toward non-defaults.
-  - **Precision**: Moderate (58%).
-  - **Recall**: Low (11%), struggling to identify defaults effectively.
-
-- **SMOTEENN Resampling**:
-  - **Recall Boost**: Recall significantly increases to 57%, making the model more effective at identifying defaults.
-  - **Precision Trade-off**: Precision drops to 25%, indicating more false positives.
-  - **Accuracy**: Reduced to ~75%, reflecting the focus on improving recall.
-
-#### **Confusion Matrix for Random Forest (SMOTEENN Resampling)**
-![Random Forest Confusion Matrix](images/random_forest_confusion_matrix.png)
+#### **Confusion Matrix for Random Forest (Oversampling)**
+![Random Forest Confusion Matrix](images/random_forest_oversampling_confusion_matrix.png)
 
 ---
 
 ### 4. KNN Classifier
 
 #### **Performance Metrics Comparison**
-![KNN Performance](images/knn_performance.png)
+- **Undersampling**:
+  - **Precision**: 18%
+  - **Recall**: 62.6%
+  - **Accuracy**: 65%
+  - **F1-Score**: 28%
+  - **Key Strengths**: Moderate recall improvement with undersampling.
+  - **Key Weaknesses**: Very low precision due to a high rate of false positives.
 
-- **Baseline Performance (No Sampling)**:
-  - **Accuracy**: High (~86%), but biased toward non-defaults.
-  - **Precision**: Moderate (44%).
-  - **Recall**: Very low (7%), performing poorly in identifying defaults.
-
-- **SMOTE Resampling**:
-  - **Recall Boost**: Recall improves to 49%.
-  - **Precision Trade-off**: Precision reduces to 29%.
-  - **Accuracy**: Slightly reduced to ~79%.
-
-#### **Confusion Matrix for KNN (SMOTE Resampling)**
-![KNN Confusion Matrix](images/knn_confusion_matrix.png)
+#### **Confusion Matrix for KNN (Undersampling)**
+![KNN Confusion Matrix](images/knn_undersampling_confusion_matrix.png)
 
 ---
 
 ### 5. XGBoost
 
 #### **Performance Metrics Comparison**
-![XGBoost Performance](images/xgboost_performance.png)
+- **Undersampling**:
+  - **Precision**: 21%
+  - **Recall**: 67.3%
+  - **Accuracy**: 69%
+  - **F1-Score**: 32%
+  - **Key Strengths**: Balanced recall improvement.
+  - **Key Weaknesses**: Lower precision and increased false positives compared to Logistic Regression.
 
-- **Baseline Performance (No Sampling)**:
-  - **Accuracy**: High (~88.5%), reflecting strong predictions for non-defaults.
-  - **Precision**: Moderate (54%).
-  - **Recall**: Low (9%), struggling with defaults.
+#### **Confusion Matrix for XGBoost (Undersampling)**
+![XGBoost Confusion Matrix](images/xgboost_undersampling_confusion_matrix.png)
 
-- **SMOTEENN Resampling**:
-  - **Recall Boost**: Recall significantly improves to 52%.
-  - **Precision Trade-off**: Precision reduces to 27%.
-  - **Accuracy**: Reduced to ~77.8%.
+---
 
-- **Tuned Hyperparameters (Scale Pos Weight)**:
-  - **Balanced Metrics**: Precision (34%) and Recall (26%) show the most balanced performance for practical applications.
-  - **Accuracy**: ~85%, reflecting improved recall with manageable trade-offs.
-
-#### **Confusion Matrix for XGBoost (Scale Pos Weight)**
-![XGBoost Confusion Matrix](images/xgboost_confusion_matrix.png)
 
 ---
 
