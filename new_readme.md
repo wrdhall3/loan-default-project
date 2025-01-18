@@ -279,19 +279,18 @@ This methodology provided a robust framework for analyzing loan defaults, enabli
 ---
 
 # Key Observations
-
 ### Logistic Regression Model
 1. **Imbalanced Dataset**:
-   - **Metrics**: Precision: 63%, Recall: 3%, Accuracy: 88.9%.
+   - **Metrics**: Precision: 63%, Recall: 7%, Accuracy: 88.7%.
    - **Strengths**: High precision for default predictions.
-   - **Weaknesses**: Very low recall, identifying only 3% of defaulters.
+   - **Weaknesses**: Very low recall, identifying only 7% of defaulters.
    - **Confusion Matrix**:
-     - Defaults correctly identified: 240 (true positives).
-     - Non-defaults correctly identified: 56,270 (true negatives).
-     - Missed defaulters: 7,187 (false negatives).
-     - Incorrectly flagged non-defaults: 140 (false positives).
+     - Defaults correctly identified: 531 (true positives).
+     - Non-defaults correctly identified: 56,103 (true negatives).
+     - Missed defaulters: 6896 (false negatives).
+     - Incorrectly flagged non-defaults: 307 (false positives).
 2. **Undersampling**:
-   - **Metrics**: Precision: 23%, Recall: 68.7%, Accuracy: 68.4%, F1-Score: 34%.
+   - **Metrics**: Precision: 23%, Recall: 69%, Accuracy: 69.2%, F1-Score: 34%.
    - **Strengths**: Significantly improved recall for defaulters, making it effective at identifying high-risk loans.
    - **Weaknesses**: Trade-off in precision and increased false positives.
    - **Confusion Matrix**:
@@ -299,43 +298,19 @@ This methodology provided a robust framework for analyzing loan defaults, enabli
      - Non-defaults correctly identified: 39,102 (true negatives).
      - Missed defaulters: 2,325 (false negatives).
      - Incorrectly flagged non-defaults: 17,308 (false positives).
-
 ---
-
-### Decision Tree Model
-1. **Imbalanced Dataset**:
-   - **Metrics**: Precision: 35%, Recall: 20%, Accuracy: 85%, F1-Score: 26%.
-   - **Strengths**: Moderate recall improvement over Logistic Regression.
-   - **Weaknesses**: Precision and accuracy were affected due to imbalance.
-   - **Confusion Matrix**:
-     - Defaults correctly identified: 1,779 (true positives).
-     - Non-defaults correctly identified: 65,671 (true negatives).
-     - Missed defaulters: 7,211 (false negatives).
-     - Incorrectly flagged non-defaults: 2,912 (false positives).
-2. **Oversampling**:
-   - **Metrics**: Precision: 31%, Recall: 45%, Accuracy: 80%, F1-Score: 37%.
-   - **Strengths**: Balanced dataset improved recall significantly.
-   - **Weaknesses**: Increased false positives reduced precision.
-   - **Confusion Matrix**:
-     - Defaults correctly identified: 4,905 (true positives).
-     - Non-defaults correctly identified: 39,076 (true negatives).
-     - Missed defaulters: 2,522 (false negatives).
-     - Incorrectly flagged non-defaults: 17,334 (false positives).
-
----
-
 ### Random Forest Model
 1. **Imbalanced Dataset**:
-   - **Metrics**: Precision: 58%, Recall: 11%, Accuracy: 87.9%, F1-Score: 18%.
+   - **Metrics**: Precision: 62%, Recall: 5%, Accuracy: 88.5%, F1-Score: 9%.
    - **Strengths**: High precision and overall accuracy.
    - **Weaknesses**: Recall remains very low, limiting its ability to identify defaulters.
    - **Confusion Matrix**:
-     - Defaults correctly identified: 988 (true positives).
-     - Non-defaults correctly identified: 67,000 (true negatives).
-     - Missed defaulters: 7,970 (false negatives).
-     - Incorrectly flagged non-defaults: 1,000 (false positives).
+     - Defaults correctly identified: 364 (true positives).
+     - Non-defaults correctly identified: 56185 (true negatives).
+     - Missed defaulters: 7,063 (false negatives).
+     - Incorrectly flagged non-defaults: 225 (false positives).
 2. **Oversampling**:
-   - **Metrics**: Precision: 26%, Recall: 66%, Accuracy: 73%, F1-Score: 37%.
+   - **Metrics**: Precision: 22%, Recall: 66%, Accuracy: 68.8%, F1-Score: 33%.
    - **Strengths**: Balanced dataset significantly improved recall.
    - **Weaknesses**: Increased false positives reduced precision and accuracy.
    - **Confusion Matrix**:
@@ -343,20 +318,38 @@ This methodology provided a robust framework for analyzing loan defaults, enabli
      - Non-defaults correctly identified: 39,076 (true negatives).
      - Missed defaulters: 2,522 (false negatives).
      - Incorrectly flagged non-defaults: 17,334 (false positives).
-
 ---
-
+### Decision Tree Model
+1. **Imbalanced Dataset**:
+   - **Metrics**: Precision: 20%, Recall: 24%, Accuracy: 80%, F1-Score: 22%.
+   - **Strengths**: Moderate recall improvement over Logistic Regression.
+   - **Weaknesses**: Precision and accuracy were affected due to imbalance.
+   - **Confusion Matrix**:
+     - Defaults correctly identified: 6,977 (true positives).
+     - Non-defaults correctly identified: 49,433 (true negatives).
+     - Missed defaulters: 5,675 (false negatives).
+     - Incorrectly flagged non-defaults: 1,752 (false positives).
+2. **Oversampling**:
+   - **Metrics**: Precision: 22%, Recall: 66%, Accuracy: 68.8%, F1-Score: 33%.
+   - **Strengths**: Balanced dataset improved recall significantly.
+   - **Weaknesses**: Increased false positives reduced precision.
+   - **Confusion Matrix**:
+     - Defaults correctly identified: 4,905 (true positives).
+     - Non-defaults correctly identified: 39,076 (true negatives).
+     - Missed defaulters: 2,522 (false negatives).
+     - Incorrectly flagged non-defaults: 17,334 (false positives).
+---
 ### KNN Classifier
 1. **Imbalanced Dataset**:
-   - **Metrics**: Precision: 44%, Recall: 7%, Accuracy: 86%, F1-Score: 12%.
+   - **Metrics**: Precision: 36%, Recall: 9%, Accuracy: 87.5%, F1-Score: 15%.
    - **Strengths**: Moderate precision but very low recall limits effectiveness.
    - **Confusion Matrix**:
-     - Defaults correctly identified: 678 (true positives).
-     - Non-defaults correctly identified: 66,800 (true negatives).
-     - Missed defaulters: 7,980 (false negatives).
-     - Incorrectly flagged non-defaults: 1,000 (false positives).
+     - Defaults correctly identified: 677 (true positives).
+     - Non-defaults correctly identified: 55,231 (true negatives).
+     - Missed defaulters: 6,750 (false negatives).
+     - Incorrectly flagged non-defaults: 1,179 (false positives).
 2. **Undersampling**:
-   - **Metrics**: Precision: 18%, Recall: 62.6%, Accuracy: 65%, F1-Score: 28%.
+   - **Metrics**: Precision: 18%, Recall: 63%, Accuracy: 62.6%, F1-Score: 28%.
    - **Strengths**: Recall improved with undersampling.
    - **Weaknesses**: Significant increase in false positives, reducing precision.
    - **Confusion Matrix**:
@@ -364,21 +357,19 @@ This methodology provided a robust framework for analyzing loan defaults, enabli
      - Non-defaults correctly identified: 35,309 (true negatives).
      - Missed defaulters: 2,778 (false negatives).
      - Incorrectly flagged non-defaults: 21,101 (false positives).
-
 ---
-
 ### XGBoost Classifier
 1. **Imbalanced Dataset**:
-   - **Metrics**: Precision: 54%, Recall: 9%, Accuracy: 88.5%, F1-Score: 15%.
+   - **Metrics**: Precision: 55%, Recall: 8%, Accuracy: 88.5%, F1-Score: 14%.
    - **Strengths**: High precision and overall accuracy.
    - **Weaknesses**: Low recall limits its ability to identify defaulters.
    - **Confusion Matrix**:
-     - Defaults correctly identified: 801 (true positives).
-     - Non-defaults correctly identified: 66,971 (true negatives).
-     - Missed defaulters: 7,980 (false negatives).
-     - Incorrectly flagged non-defaults: 1,000 (false positives).
+     - Defaults correctly identified: 606 (true positives).
+     - Non-defaults correctly identified: 55,912 (true negatives).
+     - Missed defaulters: 6,821 (false negatives).
+     - Incorrectly flagged non-defaults: 498 (false positives).
 2. **Undersampling**:
-   - **Metrics**: Precision: 21%, Recall: 67.3%, Accuracy: 69%, F1-Score: 32%.
+   - **Metrics**: Precision: 21%, Recall: 67%, Accuracy: 67.6%, F1-Score: 33%.
    - **Strengths**: Balanced performance with improved recall.
    - **Weaknesses**: Increased false positives.
    - **Confusion Matrix**:
@@ -386,19 +377,20 @@ This methodology provided a robust framework for analyzing loan defaults, enabli
      - Non-defaults correctly identified: 38,165 (true negatives).
      - Missed defaulters: 2,433 (false negatives).
      - Incorrectly flagged non-defaults: 18,245 (false positives).
-
 ---
-
 ## Summary of Models:
 1. **Best Model Overall**: Logistic Regression with Undersampling:
-   - **Metrics**: Precision: 23%, Recall: 68.7%, Accuracy: 68.4%, F1-Score: 34%.
+   - **Metrics**: Precision: 23%, Recall: 69%, Accuracy: 69.2%, F1-Score: 34%.
    - **Reason**: Achieved the best balance between recall and precision while maintaining acceptable accuracy.
-2. **Best Recall**: Logistic Regression with Undersampling (68.7%).
+2. **Best Recall**: Logistic Regression with Undersampling (69%).
 3. **Trade-offs**:
    - Models like XGBoost with undersampling provided comparable recall but suffered from lower precision and increased false positives.
    - KNN and Random Forest underperformed in terms of both precision and recall, despite moderate accuracy improvements.
 
+--- 
+
 ### Final Recommendation:
+
 Logistic Regression with Undersampling is the most effective model for this task, given its balanced metrics and ability to identify a higher proportion of defaulters without sacrificing too much precision or accuracy.
 
 ---
@@ -416,8 +408,8 @@ The following charts and confusion matrices showcase the performance of various 
 #### **Performance Metrics Comparison**
 - **Undersampling**:
   - **Precision**: 23%
-  - **Recall**: 68.7%
-  - **Accuracy**: 68.4%
+  - **Recall**: 69%
+  - **Accuracy**: 69.2%
   - **F1-Score**: 34%
   - **Key Strengths**: Achieved the best recall among all models while maintaining a good balance between precision and F1-score. This makes it the most effective model for identifying high-risk loans.
   - **Key Weaknesses**: Increased false positives due to the focus on improving recall.
@@ -427,14 +419,31 @@ The following charts and confusion matrices showcase the performance of various 
 
 ---
 
-### 2. Decision Tree
+### 2. Random Forest
 
 #### **Performance Metrics Comparison**
 - **Oversampling**:
-  - **Precision**: 31%
-  - **Recall**: 45%
-  - **Accuracy**: 80%
-  - **F1-Score**: 37%
+  - **Precision**: 22%
+  - **Recall**: 66%
+  - **Accuracy**: 68.8%
+  - **F1-Score**: 33%
+  - **Key Strengths**: Balanced performance with strong recall improvement.
+  - **Key Weaknesses**: Increased false positives, reducing precision and overall accuracy.
+
+#### **Confusion Matrix for Random Forest (Oversampling)**
+![Random Forest Confusion Matrix](images/confusion-matrix/random_forest_oversampling_confusion_matrix.png)
+
+
+---
+
+### 3. Decision Tree
+
+#### **Performance Metrics Comparison**
+- **Oversampling**:
+  - **Precision**: 22%
+  - **Recall**: 66%
+  - **Accuracy**: 68.8%
+  - **F1-Score**: 33%
   - **Key Strengths**: Improved recall through oversampling, capturing a significant proportion of defaults.
   - **Key Weaknesses**: Moderate precision due to a higher rate of false positives.
 
@@ -443,29 +452,13 @@ The following charts and confusion matrices showcase the performance of various 
 
 ---
 
-### 3. Random Forest
-
-#### **Performance Metrics Comparison**
-- **Oversampling**:
-  - **Precision**: 26%
-  - **Recall**: 66%
-  - **Accuracy**: 73%
-  - **F1-Score**: 37%
-  - **Key Strengths**: Balanced performance with strong recall improvement.
-  - **Key Weaknesses**: Increased false positives, reducing precision and overall accuracy.
-
-#### **Confusion Matrix for Random Forest (Oversampling)**
-![Random Forest Confusion Matrix](images/confusion-matrix/random_forest_oversampling_confusion_matrix.png)
-
----
-
 ### 4. KNN Classifier
 
 #### **Performance Metrics Comparison**
 - **Undersampling**:
   - **Precision**: 18%
-  - **Recall**: 62.6%
-  - **Accuracy**: 65%
+  - **Recall**: 63%
+  - **Accuracy**: 62.6%
   - **F1-Score**: 28%
   - **Key Strengths**: Moderate recall improvement with undersampling.
   - **Key Weaknesses**: Very low precision due to a high rate of false positives.
@@ -480,39 +473,39 @@ The following charts and confusion matrices showcase the performance of various 
 #### **Performance Metrics Comparison**
 - **Undersampling**:
   - **Precision**: 21%
-  - **Recall**: 67.3%
-  - **Accuracy**: 69%
-  - **F1-Score**: 32%
+  - **Recall**: 67%
+  - **Accuracy**: 67.6%
+  - **F1-Score**: 33%
   - **Key Strengths**: Balanced recall improvement.
   - **Key Weaknesses**: Lower precision and increased false positives compared to Logistic Regression.
 
 #### **Confusion Matrix for XGBoost (Undersampling)**
 ![XGBoost Confusion Matrix](images/confusion-matrix/xgboost_undersampling_confusion_matrix.png)
 
-
 ---
 
 # Observations and Key Takeaways
 
 ## Strengths and Weaknesses by Model
+
 - **Logistic Regression (Undersampling)**:  
-  - **Strengths**: Achieved the highest recall (68.7%) among all models, making it the most effective at identifying defaulters. It maintained a reasonable trade-off with precision (23%) and F1-score (34%). The simplicity and interpretability of Logistic Regression also make it ideal for business applications.
+  - **Strengths**: Achieved the highest recall (69%) among all models, making it the most effective at identifying defaulters. It maintained a reasonable trade-off with precision (23%) and F1-score (34%). The simplicity and interpretability of Logistic Regression also make it ideal for business applications.
   - **Weaknesses**: Increased false positives due to the focus on improving recall, which slightly reduced overall accuracy.
-
-- **Decision Tree (Oversampling)**:  
-  - **Strengths**: Improved recall (45%) and F1-score (37%) compared to the baseline Logistic Regression model. Oversampling helped balance the dataset and identify more defaulters.  
-  - **Weaknesses**: Moderate precision (31%) led to an increase in false positives, reducing its reliability compared to Logistic Regression.
-
+ 
 - **Random Forest (Oversampling)**:  
-  - **Strengths**: Provided a good balance of recall (66%) and F1-score (37%), with slightly better precision (26%) than Logistic Regression. Its ensemble nature improves prediction stability.  
+  - **Strengths**: Provided a good balance of recall (66%) and F1-score (33%). Its ensemble nature improves prediction stability.  
   - **Weaknesses**: While recall was high, the increased false positives made it less precise, and the complexity of the model can hinder interpretability for stakeholders.
 
+- **Decision Tree (Oversampling)**:  
+  - **Strengths**: Improved recall (66%) and F1-score (33%) compared to the baseline Logistic Regression model. Oversampling helped balance the dataset and identify more defaulters.  
+  - **Weaknesses**: Moderate precision (22%) led to an increase in false positives, reducing its reliability compared to Logistic Regression.
+
 - **KNN (Undersampling)**:  
-  - **Strengths**: Moderate recall (62.6%) with a simple, interpretable algorithm.  
+  - **Strengths**: Moderate recall (63%) with a simple, interpretable algorithm.  
   - **Weaknesses**: Low precision (18%) and F1-score (28%) due to a high rate of false positives. KNN underperformed compared to both Logistic Regression and Random Forest.
 
 - **XGBoost (Undersampling)**:  
-  - **Strengths**: Balanced recall (67.3%) and F1-score (32%) compared to KNN. The model handles complex relationships effectively.  
+  - **Strengths**: Balanced recall (67%) and F1-score (33%) compared to KNN. The model handles complex relationships effectively.  
   - **Weaknesses**: Lower precision (21%) and increased complexity compared to Logistic Regression make it less practical for real-world implementation.
 
 ---
@@ -544,20 +537,18 @@ Logistic Regression with undersampling demonstrated the best overall performance
 ### Why Logistic Regression with Undersampling Is Recommended
 
 #### 1. Performance Metrics:
-- **Recall**: Achieved the highest recall (68.7%) among all models, ensuring a significant proportion of defaulters are identified.  
-- **Precision**: While precision (23%) was lower than other models, the trade-off was acceptable given the model's ability to minimize missed defaults.  
-- **F1-Score**: Delivered a balanced F1-score (34%), reflecting a strong trade-off between recall and precision.  
-- **Accuracy**: Maintained a reasonable accuracy (68.4%), considering the focus on recall.
+- **Recall**: Achieved the highest recall (69%) among all models, ensuring a significant proportion of defaulters are correctly identified.  
+- **Precision**: Although precision (23%) was lower than other models, it was an acceptable trade-off for the improved recall, which minimizes missed defaults.  
+- **F1-Score**: Delivered a balanced F1-score (34%), highlighting an effective trade-off between recall and precision.  
+- **Accuracy**: Maintained a reasonable accuracy (69.2%), demonstrating that the model performed well overall despite the focus on recall.
 
 #### 2. Financial Model Insights:
-- The **Predicted Profit Analysis Tool** demonstrated that Logistic Regression with Undersampling consistently delivered the highest net yield and profitability compared to other models.  
-- The focus on minimizing missed defaults translated into reduced losses from defaults and maximized income from approved loans.
+- The **Predicted Profit Analysis Tool** revealed that Logistic Regression with Undersampling consistently delivered the highest net yield and profitability compared to other models.  
+- By prioritizing recall, the model successfully reduced losses from defaults, leading to maximized income from approved loans and improved profitability.
 
 #### 3. Business Application:
-- The simplicity and interpretability of Logistic Regression make it ideal for stakeholders who require clear, actionable insights into lending decisions.  
-- The efficiency of the model ensures rapid deployment and scalability across different lending portfolios.
-
----
+- The simplicity and interpretability of Logistic Regression make it an excellent choice for stakeholders who require transparent, actionable insights into lending decisions.  
+- The model’s efficiency ensures rapid deployment and scalability across various lending portfolios, making it practical for real-world business applications.
 
 ### Predicted Profit Analysis Tool
 
@@ -584,11 +575,12 @@ The **Predicted Profit Analysis Tool (PPA)** evaluates the financial viability o
 
 | Model                   | Sampling      | Accuracy | Precision | Recall | Int. Income ($M) | Loan Yield (%) |
 |-------------------------|---------------|----------|-----------|--------|------------------|----------------|
-| **Decision Tree**       | Oversampling  | 0.69     | 0.22      | 0.66   | 2.558            | 6.15           |
-| **Logistic Regression** | Undersampling | 0.69     | 0.23      | **0.69**   | **2.758**        | **6.66**       |
-| **XGBoost**             | Undersampling | 0.68     | 0.21      | 0.67   | 2.528            | 6.23           |
-| **KNN**                 | Undersampling | 0.63     | 0.18      | 0.61   | 1.812            | 4.76           |
+| **Logistic Regression** | Undersampling | **0.69**     | **0.23**      | **0.69**   | **2.758**        | **6.66**       |
 | **Random Forest**       | Oversampling  | 0.69     | 0.22      | 0.66   | 2.558            | 6.15           |
+| **Decision Tree**       | Oversampling  | 0.69     | 0.22      | 0.66   | 2.558            | 6.15           |
+| **KNN**                 | Undersampling | 0.63     | 0.18      | 0.61   | 1.812            | 4.76           |
+| **XGBoost**             | Undersampling | 0.68     | 0.21      | 0.67   | 2.528            | 6.23           |
+
 
 ---
 
