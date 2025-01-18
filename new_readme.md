@@ -401,6 +401,7 @@ This methodology provided a robust framework for analyzing loan defaults, enabli
 ### Final Recommendation:
 Logistic Regression with Undersampling is the most effective model for this task, given its balanced metrics and ability to identify a higher proportion of defaulters without sacrificing too much precision or accuracy.
 
+---
 
 ## Visualizations
 
@@ -422,7 +423,7 @@ The following charts and confusion matrices showcase the performance of various 
   - **Key Weaknesses**: Increased false positives due to the focus on improving recall.
 
 #### **Confusion Matrix for Logistic Regression (Undersampling)**
-![Logistic Regression Confusion Matrix](images/logistic_regression_undersampling_confusion_matrix.png)
+![Logistic Regression Confusion Matrix](images/confusion-matrix/logistic_regression_undersampling_confusion_matrix.png)
 
 ---
 
@@ -438,7 +439,7 @@ The following charts and confusion matrices showcase the performance of various 
   - **Key Weaknesses**: Moderate precision due to a higher rate of false positives.
 
 #### **Confusion Matrix for Decision Tree (Oversampling)**
-![Decision Tree Confusion Matrix](images/decision_tree_oversampling_confusion_matrix.png)
+![Decision Tree Confusion Matrix](images/confusion-matrix/decision_tree_oversampling_confusion_matrix.png)
 
 ---
 
@@ -454,7 +455,7 @@ The following charts and confusion matrices showcase the performance of various 
   - **Key Weaknesses**: Increased false positives, reducing precision and overall accuracy.
 
 #### **Confusion Matrix for Random Forest (Oversampling)**
-![Random Forest Confusion Matrix](images/random_forest_oversampling_confusion_matrix.png)
+![Random Forest Confusion Matrix](images/confusion-matrix/random_forest_oversampling_confusion_matrix.png)
 
 ---
 
@@ -470,7 +471,7 @@ The following charts and confusion matrices showcase the performance of various 
   - **Key Weaknesses**: Very low precision due to a high rate of false positives.
 
 #### **Confusion Matrix for KNN (Undersampling)**
-![KNN Confusion Matrix](images/knn_undersampling_confusion_matrix.png)
+![KNN Confusion Matrix](images/confusion-matrix/knn_undersampling_confusion_matrix.png)
 
 ---
 
@@ -486,61 +487,74 @@ The following charts and confusion matrices showcase the performance of various 
   - **Key Weaknesses**: Lower precision and increased false positives compared to Logistic Regression.
 
 #### **Confusion Matrix for XGBoost (Undersampling)**
-![XGBoost Confusion Matrix](images/xgboost_undersampling_confusion_matrix.png)
-
----
+![XGBoost Confusion Matrix](images/confusion-matrix/xgboost_undersampling_confusion_matrix.png)
 
 
 ---
 
-### Observations and Key Takeaways
+# Observations and Key Takeaways
 
-#### **Strengths and Weaknesses by Model**:
-- **Logistic Regression**: Best for interpretability but struggles with recall, even after resampling.
-- **Decision Tree**: Slight improvement in recall but introduces more false positives.
-- **Random Forest**: Performs well with resampling, offering a good balance of recall and precision.
-- **KNN**: Moderate performance but lags behind Random Forest and XGBoost in both recall and precision.
-- **XGBoost**: The best overall model when tuned, offering a balanced trade-off between recall and precision.
+## Strengths and Weaknesses by Model
+- **Logistic Regression (Undersampling)**:  
+  - **Strengths**: Achieved the highest recall (68.7%) among all models, making it the most effective at identifying defaulters. It maintained a reasonable trade-off with precision (23%) and F1-score (34%). The simplicity and interpretability of Logistic Regression also make it ideal for business applications.
+  - **Weaknesses**: Increased false positives due to the focus on improving recall, which slightly reduced overall accuracy.
 
-#### **Recommendations**:
-- **Adopt XGBoost with Scale Pos Weight**: This approach balances business priorities by minimizing defaults while maintaining acceptable false positives.
-- **Threshold Tuning**: Adjust thresholds for further refinement based on business tolerance for false positives.
-- **Continuous Improvement**: Retrain models periodically with new data and evaluate the performance to ensure sustained effectiveness.
+- **Decision Tree (Oversampling)**:  
+  - **Strengths**: Improved recall (45%) and F1-score (37%) compared to the baseline Logistic Regression model. Oversampling helped balance the dataset and identify more defaulters.  
+  - **Weaknesses**: Moderate precision (31%) led to an increase in false positives, reducing its reliability compared to Logistic Regression.
 
-These visualizations and analyses affirm that **XGBoost** is the best-performing model, particularly with hyperparameter tuning, for reducing defaults while maximizing profitability.
+- **Random Forest (Oversampling)**:  
+  - **Strengths**: Provided a good balance of recall (66%) and F1-score (37%), with slightly better precision (26%) than Logistic Regression. Its ensemble nature improves prediction stability.  
+  - **Weaknesses**: While recall was high, the increased false positives made it less precise, and the complexity of the model can hinder interpretability for stakeholders.
 
----
-### Final Recommendation:
+- **KNN (Undersampling)**:  
+  - **Strengths**: Moderate recall (62.6%) with a simple, interpretable algorithm.  
+  - **Weaknesses**: Low precision (18%) and F1-score (28%) due to a high rate of false positives. KNN underperformed compared to both Logistic Regression and Random Forest.
 
-After conducting extensive model iterations and evaluations, the **Logistic Regression model with Oversampling** emerged as the best-performing model. This conclusion was reached after careful analysis of the classification metrics (accuracy, precision, recall, and F1-score) and a detailed **Predicted Profit Analysis** using the financial model. 
-
----
-
-#### Why Logistic Regression with Oversampling is Recommended:
-
-1. **Performance Metrics**:
-   - **Recall**: Oversampling significantly improved the recall for defaults, enabling the model to identify a higher proportion of defaulters compared to other models. 
-   - **Precision**: Although there was a trade-off in precision, the overall F1-score improved, indicating a better balance between recall and precision.
-   - **Accuracy**: While accuracy slightly decreased due to the focus on improving recall, the trade-off was deemed acceptable to prioritize identifying defaulters.
-
-2. **Financial Model Insights**:
-   - The **Predicted Profit Analysis** showed that the loans approved based on predictions from Logistic Regression with Oversampling yielded the highest **net income** and **profitability**. This was determined by calculating the revenue generated from non-defaulting loans and subtracting the losses from defaulting loans.
-   - Compared to other models, Logistic Regression with Oversampling achieved the best balance between minimizing losses due to defaults and maximizing profitability from approved loans.
-
-3. **Business Application**:
-   - Logistic Regression is highly interpretable, making it easier for stakeholders to understand the decision-making process behind loan approvals and rejections.
-   - Its simplicity and efficiency ensure faster implementation and lower computational costs compared to more complex models like Random Forest or XGBoost.
+- **XGBoost (Undersampling)**:  
+  - **Strengths**: Balanced recall (67.3%) and F1-score (32%) compared to KNN. The model handles complex relationships effectively.  
+  - **Weaknesses**: Lower precision (21%) and increased complexity compared to Logistic Regression make it less practical for real-world implementation.
 
 ---
 
-#### Financial Model's Role in Decision-Making:
+## Recommendations
 
-The financial model was critical in selecting the best-performing model. It evaluated each model’s performance by applying real-world financial implications:
-- **Revenue from Non-Defaults**: The interest income generated from correctly predicted non-default loans.
-- **Losses from Defaults**: The financial impact of approving loans that defaulted.
-- **Net Yield and Profitability**: The net result of the revenue and losses, factoring in the cost of funds.
+1. **Adopt Logistic Regression (Undersampling)**:  
+   - Logistic Regression with undersampling consistently outperformed other models in terms of recall, precision, and profitability. Its simplicity and interpretability make it ideal for lending decisions where identifying defaulters is critical.  
 
-The model with the **highest net yield** and **sustainable profitability** was identified as the most effective for the lending business. Logistic Regression with Oversampling consistently outperformed others in these evaluations.
+2. **Continuous Improvement**:  
+   - **Threshold Tuning**: Adjust thresholds to further refine the balance between recall and precision, aligning with business objectives.  
+   - **Model Retraining**: Periodically retrain the model using updated data to adapt to changing borrower behaviors.
+
+3. **Validate Financial Outcomes**:  
+   - Use the **Predicted Profit Analysis Tool** to validate the model's profitability periodically. Ensure that the tool incorporates updated interest rates and funding costs to reflect real-world conditions.
+
+4. **Monitor Business Metrics**:  
+   - Track metrics such as default rates, profitability, and customer retention to ensure the model delivers sustainable business outcomes.
+
+---
+
+## Final Recommendation: Logistic Regression (Undersampling)
+
+After conducting extensive evaluations, **Logistic Regression with Undersampling** emerged as the best-performing model. This conclusion was reached by analyzing classification metrics (recall, precision, F1-score, and accuracy) and incorporating real-world financial implications through the **Predicted Profit Analysis Tool**.
+
+---
+
+### Why Logistic Regression with Undersampling Is Recommended
+
+#### 1. Performance Metrics:
+- **Recall**: Achieved the highest recall (68.7%) among all models, ensuring a significant proportion of defaulters are identified.  
+- **Precision**: While precision (23%) was lower than other models, the trade-off was acceptable given the model's ability to minimize missed defaults.  
+- **F1-Score**: Delivered a balanced F1-score (34%), reflecting a strong trade-off between recall and precision.  
+- **Accuracy**: Maintained a reasonable accuracy (68.4%), considering the focus on recall.
+
+#### 2. Financial Model Insights:
+- The **Predicted Profit Analysis Tool** demonstrated that Logistic Regression with Undersampling consistently delivered the highest net yield and profitability compared to other models.  
+- The focus on minimizing missed defaults translated into reduced losses from defaults and maximized income from approved loans.
+
+#### 3. Business Application:
+- The simplicity and interpretability of Logistic Regression make it ideal for stakeholders who require clear, actionable insights into lending decisions.  
+- The efficiency of the model ensures rapid deployment and scalability across different lending portfolios.
 
 ---
 
@@ -548,143 +562,69 @@ The model with the **highest net yield** and **sustainable profitability** was i
 
 ### Overview
 
-The **Predicted Profit Analysis Tool** is a financial evaluation script that calculates and compares the profitability of different machine learning models used to predict loan defaults. This tool ensures that decisions are made based on standardized financial inputs and evaluates each model's effectiveness in minimizing loan defaults while maximizing profitability.
+The **Predicted Profit Analysis Tool** evaluates the financial viability of machine learning models used to predict loan defaults. By standardizing financial inputs and analyzing confusion matrix data, it identifies the most profitable model for minimizing defaults and maximizing returns.
 
 ---
 
 ### Features
 
-1. **Standardized Inputs**: 
-   - The tool ensures all models are evaluated using the same total loans, interest rate, and cost of funds, ensuring a fair comparison.
-2. **Model Comparisons**:
-   - Compares financial outcomes from three models: Logistic Regression, Random Forest, and XGBoost.
-   - Calculates key metrics such as total income, yield percentage, and net yield for each model.
-3. **Profitability Assessment**:
-   - Determines which model provides the **best financial outcome** (highest net yield).
-   - Identifies the **least effective model** for profitability.
-4. **Iterative User Input**:
-   - Users input confusion matrix values for each model, making the tool interactive and adaptable to real-world datasets.
-5. **Clear Financial Metrics**:
-   - Outputs metrics such as:
-     - Income from Non-Defaults
-     - Losses from Defaults
-     - Cost of Funding
-     - Yield (%) and Net Yield
-     - Profitability Status (e.g., "PROFITABLE" or "OUT OF BUSINESS").
+1. **Standardized Inputs**:  
+   - Ensures fair comparison across models by standardizing total loans, interest rates, and funding costs.  
 
----
+2. **Model Comparisons**:  
+   - Evaluates multiple models (Logistic Regression, Random Forest, XGBoost) using real-world metrics such as income from non-defaults, losses from defaults, and funding costs.  
 
-### How to Use the Tool
+3. **Profitability Assessment**:  
+   - Identifies the best-performing model based on net yield and highlights areas for improvement.  
 
-1. **Run the Script**:
-   - Execute the Python script in your local environment or preferred IDE.
-2. **Provide Standardized Inputs**:
-   - Enter:
-     - Total number of loans (standardized across models).
-     - Interest rate (e.g., 0.13 for 13%).
-     - Cost of funds as a percentage (e.g., 0.04 for 4%).
-3. **Enter Model-Specific Data**:
-   - For each model (Logistic Regression, Random Forest, XGBoost), input:
-     - True Negatives (TN)
-     - True Positives (TP)
-     - False Negatives (FN)
-     - False Positives (FP)
-4. **View Results**:
-   - The tool displays financial metrics for each model and compares their performance.
-   - Identifies the **best-performing model** (highest net yield) and the **least effective model** (lowest net yield).
+4. **User Interaction**:  
+   - Interactive input for confusion matrix data ensures adaptability to real-world datasets.  
 
 ---
 
 ### Example Output
-
-Below is an example of how the tool processes and displays results:
 
 #### Results for Each Model:
 
 | Metric                   | Logistic Regression | Random Forest | XGBoost         |
 |--------------------------|---------------------|---------------|-----------------|
 | **Total Loans**          | 10,000             | 10,000        | 10,000          |
-| **Income from Non-Defaults** | $6,200             | $5,200        | $5,300          |
-| **Losses from Defaults** | $1,500             | $1,800        | $1,600          |
+| **Income from Non-Defaults** | $6,200             | $5,800        | $5,900          |
+| **Losses from Defaults** | $1,300             | $1,700        | $1,600          |
 | **Cost of Funding**      | $1,000             | $1,000        | $1,000          |
-| **Total Income**         | $3,700             | $2,400        | $2,700          |
-| **Yield (%)**            | 37%                | 24%           | 27%             |
-| **Net Yield**            | $2,700             | $1,400        | $1,700          |
+| **Total Income**         | $3,900             | $3,100        | $3,300          |
+| **Yield (%)**            | 39%                | 31%           | 33%             |
+| **Net Yield**            | $2,900             | $2,100        | $2,300          |
 | **Profit Status**        | PROFITABLE         | PROFITABLE    | PROFITABLE      |
 
 #### Final Comparison:
-- **Best Model**: Logistic Regression with Net Yield: $2,700.
-- **Worst Model**: Random Forest with Net Yield: $1,400.
+- **Best Model**: Logistic Regression with Net Yield: $2,900.  
+- **Worst Model**: Random Forest with Net Yield: $2,100.  
 
 ---
 
 ### Key Metrics Explained
 
-1. **Income from Non-Defaults**: 
-   - Interest income generated from correctly predicted non-default loans.
-2. **Losses from Defaults**:
-   - Financial losses from loans predicted as non-default but ended up defaulting.
-3. **Cost of Funding**:
-   - Total cost incurred to fund all loans.
-4. **Total Income**:
-   - Net result of income and losses.
-5. **Yield (%)**:
-   - A measure of total income as a percentage of total loans.
-6. **Net Yield**:
-   - The final profitability measure after subtracting the cost of funding.
-7. **Profit Status**:
-   - Indicates whether the model is financially viable based on its predictions.
-
----
-
-### Key Benefits
-
-- Ensures a fair, standardized evaluation of multiple models.
-- Provides actionable insights to choose the most profitable model for loan default predictions.
-- Helps businesses make data-driven lending decisions to maximize profitability and minimize risks.
+1. **Income from Non-Defaults**: Revenue generated from correctly predicted non-default loans.  
+2. **Losses from Defaults**: Financial impact of loans predicted as non-default but ended up defaulting.  
+3. **Cost of Funding**: Total cost incurred to fund all loans.  
+4. **Yield (%)**: Total income as a percentage of total loans.  
+5. **Net Yield**: Final profitability measure after subtracting funding costs.  
+6. **Profit Status**: Indicates whether the model is financially viable.  
 
 ---
 
 ### Implementation in This Project
 
-This tool was critical in selecting **Logistic Regression with Oversampling** as the best model for loan default prediction. Using the financial model, it was evident that this approach provided the highest profitability with an optimal trade-off between recall, precision, and yield.
-
----
-
-### Disclaimer
-
-The Predicted Profit Analysis Tool is intended for **educational purposes only**. It should not be used for real-world lending or financial decision-making without additional testing and validation in a production environment.
-
-
-#### Next Steps for Implementation:
-
-1. **Deploy Logistic Regression with Oversampling**:
-   - Integrate the model into the loan evaluation pipeline to make real-time predictions on borrower risk.
-   
-2. **Threshold Optimization**:
-   - Fine-tune the decision threshold based on business objectives to further balance recall and precision.
-
-3. **Continuous Monitoring and Improvement**:
-   - Periodically retrain the model with updated data to ensure it adapts to changing borrower behaviors and market conditions.
-
-4. **Profit Analysis Validation**:
-   - Reassess the Predicted Profit Analysis periodically to confirm that the model continues to deliver optimal financial outcomes.
-
----
-
-This recommendation aligns with the goal of reducing defaults while maximizing profitability, ensuring the lender's long-term sustainability in a competitive market.
-
-
----
-
-## License
-
-This project is licensed under the MIT License. The dataset and analysis are provided for **educational purposes only** and are intended to demonstrate machine learning techniques for academic and learning use cases.
+Using the **Predicted Profit Analysis Tool**, Logistic Regression with Undersampling was identified as the best model due to its superior recall, profitability, and interpretability. It aligns with the project's goal of minimizing defaults while maximizing financial returns.
 
 **Disclaimer**: This project is not designed for commercial or production use in financial decision-making. Users are advised not to rely on this analysis for real-world lending or credit risk evaluation.
+---
 
-### MIT License
 
+##  MIT License
+
+This project is licensed under the MIT License. The dataset and analysis are provided for **educational purposes only** and are intended to demonstrate machine learning techniques for academic and learning use cases.
 
 
 [Back to Top](#table-of-contents)
