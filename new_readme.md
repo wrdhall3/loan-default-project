@@ -552,6 +552,118 @@ The model with the **highest net yield** and **sustainable profitability** was i
 
 ---
 
+## Predicted Profit Analysis Tool
+
+### Overview
+
+The **Predicted Profit Analysis Tool** is a financial evaluation script that calculates and compares the profitability of different machine learning models used to predict loan defaults. This tool ensures that decisions are made based on standardized financial inputs and evaluates each model's effectiveness in minimizing loan defaults while maximizing profitability.
+
+---
+
+### Features
+
+1. **Standardized Inputs**: 
+   - The tool ensures all models are evaluated using the same total loans, interest rate, and cost of funds, ensuring a fair comparison.
+2. **Model Comparisons**:
+   - Compares financial outcomes from three models: Logistic Regression, Random Forest, and XGBoost.
+   - Calculates key metrics such as total income, yield percentage, and net yield for each model.
+3. **Profitability Assessment**:
+   - Determines which model provides the **best financial outcome** (highest net yield).
+   - Identifies the **least effective model** for profitability.
+4. **Iterative User Input**:
+   - Users input confusion matrix values for each model, making the tool interactive and adaptable to real-world datasets.
+5. **Clear Financial Metrics**:
+   - Outputs metrics such as:
+     - Income from Non-Defaults
+     - Losses from Defaults
+     - Cost of Funding
+     - Yield (%) and Net Yield
+     - Profitability Status (e.g., "PROFITABLE" or "OUT OF BUSINESS").
+
+---
+
+### How to Use the Tool
+
+1. **Run the Script**:
+   - Execute the Python script in your local environment or preferred IDE.
+2. **Provide Standardized Inputs**:
+   - Enter:
+     - Total number of loans (standardized across models).
+     - Interest rate (e.g., 0.13 for 13%).
+     - Cost of funds as a percentage (e.g., 0.04 for 4%).
+3. **Enter Model-Specific Data**:
+   - For each model (Logistic Regression, Random Forest, XGBoost), input:
+     - True Negatives (TN)
+     - True Positives (TP)
+     - False Negatives (FN)
+     - False Positives (FP)
+4. **View Results**:
+   - The tool displays financial metrics for each model and compares their performance.
+   - Identifies the **best-performing model** (highest net yield) and the **least effective model** (lowest net yield).
+
+---
+
+### Example Output
+
+Below is an example of how the tool processes and displays results:
+
+#### Results for Each Model:
+
+| Metric                   | Logistic Regression | Random Forest | XGBoost         |
+|--------------------------|---------------------|---------------|-----------------|
+| **Total Loans**          | 10,000             | 10,000        | 10,000          |
+| **Income from Non-Defaults** | $5,000             | $5,200        | $5,300          |
+| **Losses from Defaults** | $2,000             | $1,800        | $1,600          |
+| **Cost of Funding**      | $1,000             | $1,000        | $1,000          |
+| **Total Income**         | $2,000             | $2,400        | $2,700          |
+| **Yield (%)**            | 20%                | 24%           | 27%             |
+| **Net Yield**            | $1,000             | $1,400        | $1,700          |
+| **Profit Status**        | PROFITABLE         | PROFITABLE    | PROFITABLE      |
+
+#### Final Comparison:
+- **Best Model**: XGBoost with Net Yield: $1,700.
+- **Worst Model**: Logistic Regression with Net Yield: $1,000.
+
+---
+
+### Key Metrics Explained
+
+1. **Income from Non-Defaults**: 
+   - Interest income generated from correctly predicted non-default loans.
+2. **Losses from Defaults**:
+   - Financial losses from loans predicted as non-default but ended up defaulting.
+3. **Cost of Funding**:
+   - Total cost incurred to fund all loans.
+4. **Total Income**:
+   - Net result of income and losses.
+5. **Yield (%)**:
+   - A measure of total income as a percentage of total loans.
+6. **Net Yield**:
+   - The final profitability measure after subtracting the cost of funding.
+7. **Profit Status**:
+   - Indicates whether the model is financially viable based on its predictions.
+
+---
+
+### Key Benefits
+
+- Ensures a fair, standardized evaluation of multiple models.
+- Provides actionable insights to choose the most profitable model for loan default predictions.
+- Helps businesses make data-driven lending decisions to maximize profitability and minimize risks.
+
+---
+
+### Implementation in This Project
+
+This tool was critical in selecting **Logistic Regression with Oversampling** as the best model for loan default prediction. Using the financial model, it was evident that this approach provided the highest profitability with an optimal trade-off between recall, precision, and yield.
+
+---
+
+### **Disclaimer**
+
+The Predicted Profit Analysis Tool is intended for **educational purposes only**. It should not be used for real-world lending or financial decision-making without additional testing and validation in a production environment.
+
+
 #### Next Steps for Implementation:
 
 1. **Deploy Logistic Regression with Oversampling**:
