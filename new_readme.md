@@ -618,7 +618,6 @@ The **Predicted Profit Analysis Tool** evaluates the financial viability of mach
 
 Using the **Predicted Profit Analysis Tool**, Logistic Regression with Undersampling was identified as the best model due to its superior recall, profitability, and interpretability. It aligns with the project's goal of minimizing defaults while maximizing financial returns.
 
-**Disclaimer**: This project is not designed for commercial or production use in financial decision-making. Users are advised not to rely on this analysis for real-world lending or credit risk evaluation.
 ---
 
 
@@ -626,5 +625,6 @@ Using the **Predicted Profit Analysis Tool**, Logistic Regression with Undersamp
 
 This project is licensed under the MIT License. The dataset and analysis are provided for **educational purposes only** and are intended to demonstrate machine learning techniques for academic and learning use cases.
 
+**Disclaimer**: This project is not designed for commercial or production use in financial decision-making. Users are advised not to rely on this analysis for real-world lending or credit risk evaluation.
 
 [Back to Top](#table-of-contents)
