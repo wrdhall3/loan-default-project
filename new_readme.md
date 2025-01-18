@@ -612,17 +612,17 @@ Below is an example of how the tool processes and displays results:
 | Metric                   | Logistic Regression | Random Forest | XGBoost         |
 |--------------------------|---------------------|---------------|-----------------|
 | **Total Loans**          | 10,000             | 10,000        | 10,000          |
-| **Income from Non-Defaults** | $5,000             | $5,200        | $5,300          |
-| **Losses from Defaults** | $2,000             | $1,800        | $1,600          |
+| **Income from Non-Defaults** | $6,200             | $5,200        | $5,300          |
+| **Losses from Defaults** | $1,500             | $1,800        | $1,600          |
 | **Cost of Funding**      | $1,000             | $1,000        | $1,000          |
-| **Total Income**         | $2,000             | $2,400        | $2,700          |
-| **Yield (%)**            | 20%                | 24%           | 27%             |
-| **Net Yield**            | $1,000             | $1,400        | $1,700          |
+| **Total Income**         | $3,700             | $2,400        | $2,700          |
+| **Yield (%)**            | 37%                | 24%           | 27%             |
+| **Net Yield**            | $2,700             | $1,400        | $1,700          |
 | **Profit Status**        | PROFITABLE         | PROFITABLE    | PROFITABLE      |
 
 #### Final Comparison:
-- **Best Model**: XGBoost with Net Yield: $1,700.
-- **Worst Model**: Logistic Regression with Net Yield: $1,000.
+- **Best Model**: Logistic Regression with Net Yield: $2,700.
+- **Worst Model**: Random Forest with Net Yield: $1,400.
 
 ---
 
@@ -659,7 +659,7 @@ This tool was critical in selecting **Logistic Regression with Oversampling** as
 
 ---
 
-### **Disclaimer**
+### Disclaimer
 
 The Predicted Profit Analysis Tool is intended for **educational purposes only**. It should not be used for real-world lending or financial decision-making without additional testing and validation in a production environment.
 
