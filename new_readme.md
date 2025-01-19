@@ -616,6 +616,9 @@ The **Predicted Profit Analysis Tool (PPA)** evaluates the financial viability o
 
 
 ---
+This tool validated the project’s hypothesis, affirming **Logistic Regression with Undersampling** as the optimal model to minimize loan defaults and maximize financial stability.
+
+---
 
 #### Observations and Recommendations
 
@@ -651,9 +654,6 @@ The **Predicted Profit Analysis Tool (PPA)** evaluates the financial viability o
 3. **Interpretability**: Logistic Regression’s simplicity aids in stakeholder communication and operational integration.
 
 ---
-
-This tool validated the project’s hypothesis, affirming **Logistic Regression with Undersampling** as the optimal model to minimize loan defaults and maximize financial stability.
-
 
 ##  MIT License
 
