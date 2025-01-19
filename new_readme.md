@@ -385,7 +385,6 @@ This methodology provided a robust framework for analyzing loan defaults, enabli
 2. **Best Recall**: Logistic Regression with Undersampling (69%).
 3. **Trade-offs**:
    - Models like XGBoost with undersampling provided comparable recall but suffered from lower precision and increased false positives.
-   - KNN and Random Forest underperformed in terms of both precision and recall, despite moderate accuracy improvements.
 
 --- 
 
@@ -568,6 +567,40 @@ The **Predicted Profit Analysis Tool (PPA)** evaluates the financial viability o
 
 3. **Profitability Assessment**:  
    - Highlights the best-performing model and its potential to maximize returns while minimizing loan defaults.
+
+
+
+---
+
+### Logistic Regression - Undersampling
+
+|                     | Predicted N (Negative) | Predicted P (Positive) |
+|---------------------|------------------------|------------------------|
+| **Actual N (Non-default)** | 39,102                 | 17,308                 |
+| **Actual P (Default)**      | 2,325                  | 5,102                  |
+
+**Predicted Accuracy**: 0.69  
+**Predicted Precision**: 0.23  
+**Predicted Recall**: 0.69  
+
+---
+
+### Predicted Profit Analysis (PPA)
+
+|                     | Non-default (0) | Default (1)  |
+|---------------------|-----------------|--------------|
+| **Actual**          | 39,102          | 2,325        |
+
+**Interest Rate**: 13%  
+**Interest Income**: $5.083M  
+**Before Cost of Deposit**: $2.758M  
+
+|                     |                  |
+|---------------------|------------------|
+| **Yield**           | 6.66%           |
+| **Cost of Fund (Deposits)** | 4.00%           |
+| **Net Yield**       | 2.66%           |
+
 
 ---
 
