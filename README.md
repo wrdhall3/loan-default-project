@@ -3,9 +3,10 @@
 <h1 style="font-size: 3em;">Predicting Loan Default</h1>  
 <h2 style="font-size: 2em;">A Machine Learning Model and Analysis</h2>
 
-<img src="images/bank_loan_intro.png" alt="Bank Loans Using Machine Learning" style="width:100%; height:500px; object-fit:cover;">
+<img src="images/bank_loan_intro.png" alt="Bank Loans Using Machine Learning" style="width:80%; height:auto;">
 
 </div>
+
 
 ---
 
@@ -18,85 +19,72 @@ Advanced methods, including feature engineering, data encoding, oversampling, an
 ---
 
 ## Table of Contents
-- [Project Overview: Lender's Story](#project-overview)
+- [Executive Summary](#executive-summary)
+- [Project Overview: Lender's Story](#project-overview-lenders-story)
+- [Project Overview](#project-overview)
 - [Goals](#goals)
-- [Data Sources](#data-sources)
+- [Data Source](#data-source)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Methodology](#methodology)
-- [Hypotheses and Expected Findings](#hypotheses-and-expected-findings)
-- [Experimental Approach and Key Observations](#experimental-approach-and-key-observations)
-- [Statistical Summary and Predictive Model Setup](#statistical-summary-and-predictive-model-setup)
+- [Key Observations](#key-observations)
 - [Visualizations](#visualizations)
-- [Analysis-Driven Recommendations](#analysis-driven-recommendations)
-- [Future Opportunities](#future-opportunities)
+- [Final Recommendation](#final-recommendation)
 - [License](#license)
 
 ---
 
 ## Project Overview: Lender's Story
 
-In the competitive landscape of financial loan services, our company operates with a clear mission: to minimize loan defaults and ensure the sustainability of our business model. We are committed to responsible lending practices, carefully balancing risk and opportunity while maintaining financial health. Our financial model hinges on identifying and avoiding high-risk loans, as defaults can severely impact profitability.
+Woeful Banking Corp. (WBG) is in a critical turnaround situation due to its past emphasis on market share growth over profitability. This strategy has resulted in high levels of loan defaults, jeopardizing the company's financial stability. In the past year alone, WBG approved over 250,000 loans, amounting to $32.577 billion, generating $3.716 billion in interest income. However, this success was overshadowed by $4.285 billion in write-offs due to loan defaults, leaving the company with a net loss of $569 million before funding costs and other expenses.
 
-For example, with an average 10% interest rate on loans, a single default can erase the profits from ten successful loans. While it is impossible to eliminate defaults entirely, minimizing their occurrence is critical to our business staying solvent and competitive in the market.
+To address this challenge, WBG enlisted Insight Consultancy Group (ICG), a team of seasoned professionals specializing in financial technology services, to analyze its loan dataset. The goal is to develop a data-driven lending program that minimizes defaults, increases profitability, and ensures the company’s long-term sustainability. 
 
-Our approach involves leveraging data-driven insights to assess the default risk of potential borrowers. By analyzing historical loan data, credit profiles, and behavioral patterns, we identify loans that pose the highest likelihood of default. High-risk loans are declined to protect the company from financial losses, enabling us to allocate resources effectively to borrowers with strong repayment potential.
+ICG's approach focuses on leveraging machine learning to predict loan defaults, enabling WBG to identify and reject high-risk loans while minimizing lost revenue from unnecessarily rejecting reliable borrowers. The analysis culminates in a **Predicted Profit Analysis (PPA)**, which evaluates the profitability of loans predicted to be non-defaulting. Future lending decisions will be guided by this new framework to restore WBG’s financial health.
 
-However, this process is more nuanced than simply rejecting risky loans. Important considerations include:
-- **Accuracy**: How reliably can we predict loan defaults?
-- **Precision**: Are we correctly identifying defaulters without rejecting too many reliable borrowers?
-- **Impact**: What are the financial and reputational effects of these decisions?
+Important considerations in this initiative include:
+- **Accuracy**: How reliably can we predict defaults?
+- **Precision**: Are we correctly identifying defaulters while minimizing the rejection of good borrowers?
+- **Impact**: What are the financial outcomes of these decisions, and how do they support WBG’s turnaround?
 
-Our analysis must balance these considerations to maintain our financial stability while fostering trust and transparency with our clients. This delicate balance ensures that our lending practices remain both ethical and profitable.
+Through this balanced approach, WBG aims to implement ethical, profitable lending practices that secure its future while fostering trust and transparency.
 
 ---
 
 ## Project Overview
 
-The objective of this project is to predict loan defaults using advanced machine learning models, focusing on identifying high-risk borrowers while minimizing the rejection of low-risk ones. The dataset for this analysis is imbalanced, with significantly more borrowers who do not default compared to those who do.
+The objective of this project is to utilize advanced machine learning models to predict loan defaults and create a decision-making framework that reduces high-risk loans while maximizing profitable lending opportunities. The dataset for this analysis is imbalanced, with significantly more non-defaults than defaults, presenting unique challenges for model training and evaluation.
 
-Key challenges and goals:
+### Key Challenges and Goals:
 1. **Imbalanced Data**: With far fewer defaults than non-defaults, the model must focus on correctly identifying the minority class without being biased toward the majority class.
 2. **Performance Metrics**:
-   - **Accuracy**: Often misleading in imbalanced datasets, as it can be skewed by the majority class.
-   - **Precision**: Critical to ensure that flagged defaulters are truly high-risk borrowers.
-   - **Recall**: Vital to identify as many defaulters as possible, even if it means accepting a trade-off with precision.
-3. **Balancing Metrics**: The ultimate goal is to strike the right balance between recall, precision, and overall accuracy, ensuring that the financial model minimizes risk while maximizing lending opportunities.
+   - **Accuracy**: Often misleading in imbalanced datasets, as it may overly reflect the majority class performance.
+   - **Precision**: Ensures flagged defaulters are truly high-risk borrowers.
+   - **Recall**: Prioritizes identifying as many defaulters as possible, even at the expense of precision.
+3. **Balancing Metrics**: Striking the right balance between recall, precision, and accuracy is essential for minimizing risk while maximizing lending opportunities.
 
-This project utilizes techniques like feature engineering, resampling methods (SMOTE, SMOTEENN), and hyperparameter tuning to optimize model performance. By combining predictive modeling with financial analysis, our aim is to create a robust decision-making framework that reduces defaults and enhances profitability.
+This project applies a combination of machine learning techniques, including feature engineering, resampling methods (e.g., SMOTE, SMOTEENN), and hyperparameter tuning, to optimize model performance. The results are further evaluated using financial metrics to determine profitability and guide lending strategies.
 
 ---
 
-
 ### Goals
-1. **Feature Engineering and Correlation**:  
-- Feature engineering creates new features (or columns) to improve the performance of machine learning models.  New features are derived from the existing data.  The new columns can catpure important relationships in the data that may help the model make better predictions.
-- A correlation matrix is a table that shows the correlation coefficients between
-multiple variables in a dataset.  In particular, how are the other variables
-correlated with default.  New features above are assessed to determine if the
-model can be improved. 
+1. **Feature Engineering and Correlation**:
+   - Derive new features from existing data to improve model performance.
+   - Use a correlation matrix to identify relationships between variables and default outcomes, ensuring the model leverages the most predictive features.
 
-2. **Minimum Preprocessing Case**:  Perform the minimum preprocessing that 
-includes encoding and standarization (or scaling).  Classification models
-include Logistic Regression, Random Forest, Decision Tree, KNN, and XGBoost.  
-The classification_report() provides statistics such as accuracy, precision, and
-recall.  Which model produces the best result?
+2. **Minimum Preprocessing Case**:
+   - Perform minimal preprocessing (encoding and standardization/scaling).
+   - Train classification models such as Logistic Regression, Random Forest, Decision Tree, KNN, and XGBoost, and evaluate performance using metrics like accuracy, precision, and recall.
 
-3. **Further Preprocessing Case**:  Further preprocessing is a critical step 
-in the data preparation phase of machine learning and data analysis.  The goal 
-is to improve the quality of the data and enhance the performance of the chosen
-models.  Each machine learning model is further processed and includes
-sampling of the default (under and over sampler, SMOTE and SMOTEENN).
+3. **Further Preprocessing Case**:
+   - Apply advanced preprocessing, including resampling techniques like undersampling, oversampling, SMOTE, and SMOTEENN, to handle class imbalance and improve recall.
 
-4. **Choose the Best Model**:  
-- Accuracy does not tell the full story.  The emphasis is on increasing the 
-recall of defaults (y=1) while having acceptable accuracy and precision.  
-- Using the data from the confusion table, the lender makes loans based on the predicted results.  The level of forecasted profits and profitability is the
-best measure to choose the best model.  
+4. **Choose the Best Model**:
+   - Evaluate models based on recall, accuracy, and precision.
+   - Use confusion matrix data to simulate lending decisions, calculating the forecasted profits and selecting the model with the best financial and predictive performance.
 
-Through this structured approach, we leverage the dataset, preprocessing,  
-predictive modeling, and business analysis to select the best model for 
-financial success. 
+Through this structured approach, WBG aims to implement a sustainable lending program that reduces loan defaults and restores profitability, ultimately securing its position in the competitive financial services market.
+
 
 ---
 
@@ -151,44 +139,76 @@ pio install imbalanced-learn
 3. **Dependencies**
 Below is the core set of dependencies used in this project:
 ```python
+# Core libraries for data manipulation and visualization
 import pandas as pd
-import matplotlib.pyplot as plt
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import accuracy_score
-from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder
-from sklearn.compose import ColumnTransformer
-
+import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-from sklearn.metrics import confusion_matrix
-from sklearn.metrics import classification_report
+# Machine Learning libraries and models
+from sklearn.model_selection import train_test_split, GridSearchCV, RandomizedSearchCV
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from xgboost import XGBClassifier  # Requires XGBoost library installation
 
+# Data preprocessing
+from sklearn.preprocessing import StandardScaler, MinMaxScaler
+from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder
+from sklearn.compose import ColumnTransformer
+from sklearn.pipeline import Pipeline
+
+# Evaluation metrics
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score
+from sklearn.metrics import confusion_matrix, classification_report, roc_curve, auc
+
+# Handling imbalanced datasets
 from imblearn.under_sampling import RandomUnderSampler
-from imblearn.over_sampling import RandomOverSampler
-from imblearn.over_sampling import SMOTE
+from imblearn.over_sampling import RandomOverSampler, SMOTE
 from imblearn.combine import SMOTEENN
+
+# Miscellaneous utilities
+from collections import Counter
+import warnings
+warnings.filterwarnings('ignore')  # Suppress warnings for cleaner output
 ```
 --- 
 
 ## Usage
 
-### Run the Notebook
-Open and run the `loan_default_project.ipynb` notebook, which contains all code 
-for data retrieval, analysis, and visualization. Ensure that the environment is 
-configured correctly with the required dependencies.
+### Running the Notebook
+1. Open the `loan_default_project.ipynb` notebook in a Jupyter Notebook environment or any compatible IDE (e.g., JupyterLab, VS Code with Python extensions).
+2. Ensure all required dependencies are installed in your environment (refer to the `Dependencies` section in the README).
+3. Run the notebook cell by cell to execute the workflow, from data retrieval and preprocessing to model training, evaluation, and visualization.
 
+### Data Retrieval and Preparation
+- The notebook loads the dataset `Loan_default.csv`, which contains loan information, borrower details, and loan default outcomes.
+- The dataset is cleaned and preprocessed, including:
+  - Handling missing values (if any).
+  - Encoding categorical features using `OneHotEncoder` and `OrdinalEncoder`.
+  - Scaling numerical features using `StandardScaler`.
 
-### Data Retrieval and Analysis
-- The notebook first retrieves the data from the Loan_default.csv.
+### Data Analysis and Visualization
+- The notebook includes exploratory data analysis (EDA) to understand the dataset:
+  - **Descriptive Statistics**: Summary statistics for all features.
+  - **Correlation Analysis**: A correlation matrix to identify relationships between variables.
+  - **Data Distribution**: Visualizations, including histograms, box plots, and bar charts, for better feature understanding.
+- Statistical tables and visualizations are generated to illustrate:
+  - Class distribution (e.g., default vs. non-default).
+  - Feature importance from trained models.
 
-### Plotting and Statistical Tables
-- The notebook provides visualization of the original dataset and statistical
- tables based on the classification models.
+### Model Training and Evaluation
+- The notebook trains multiple classification models, including Logistic Regression, Decision Tree, Random Forest, KNN, and XGBoost, to predict loan defaults.
+- Evaluation metrics such as accuracy, precision, recall, F1-score, and AUC-ROC are used to assess model performance.
+- Confusion matrices and other visualizations are provided to analyze the models’ predictions.
+
+### Profitability Analysis
+- A **Predicted Profit Analysis (PPA)** evaluates the financial impact of lending decisions based on each model's predictions.
+- The notebook computes financial metrics, including yield, net yield, and profitability status, for different lending scenarios.
+
+By following the notebook, you can replicate the entire process, from data loading to financial evaluation, and gain insights into the most effective model for predicting loan defaults and maximizing profitability.
+
 
 ---
 
@@ -259,163 +279,387 @@ This methodology provided a robust framework for analyzing loan defaults, enabli
 
 ---
 
-## Key Observations
-
-#### 1. **XGBoost Classifier on Original (Imbalanced) Dataset**
-- Training set shape: 178,742 samples, Testing set shape: 76,605 samples.
-- Class distribution:
-  - Training set: 11.6% default (20,757 samples), 88.4% non-default (157,985 samples).
-  - Testing set: 11.6% default (8,896 samples), 88.4% non-default (67,709 samples).
-- Key evaluation metrics:
-  - **Precision**: 54% for default prediction, indicating some accuracy in identifying defaulters.
-  - **Recall**: 9%, reflecting a low proportion of defaulters correctly identified.
-  - **Accuracy**: 88.5%, primarily due to the model's success in predicting non-defaults.
-- Confusion Matrix:
-  - Defaults correctly identified: 801 (true positives).
-  - Non-defaults correctly identified: 66,971 (true negatives).
-  - Missed defaulters: 8,095 (false negatives).
-  - Incorrectly flagged non-defaults: 738 (false positives).
-
-#### 2. **XGBoost Classifier with SMOTE Resampling**
-- Resampled class distribution:
-  - Balanced dataset with approximately 50% default and 50% non-default in the training set.
-- Key evaluation metrics:
-  - **Precision**: 41% for default prediction.
-  - **Recall**: 16%, an improvement over the imbalanced model.
-  - **Accuracy**: 87.6%, with improved balance between classes.
-- Confusion Matrix:
-  - Defaults correctly identified: 1,424 (true positives).
-  - Non-defaults correctly identified: 65,615 (true negatives).
-  - Missed defaulters: 7,472 (false negatives).
-  - Incorrectly flagged non-defaults: 2,094 (false positives).
-
-#### 3. **XGBoost Classifier with SMOTEENN (Combined Resampling)**
-- Resampled class distribution:
-  - Training set balanced with 157,470 default samples and 84,934 non-default samples.
-- Key evaluation metrics:
-  - **Precision**: 27% for default prediction.
-  - **Recall**: 52%, indicating significantly better identification of defaulters.
-  - **Accuracy**: 77.8%, slightly reduced due to trade-offs in precision and accuracy.
-- Confusion Matrix:
-  - Defaults correctly identified: 4,626 (true positives).
-  - Non-defaults correctly identified: 55,000 (true negatives).
-  - Missed defaulters: 4,270 (false negatives).
-  - Incorrectly flagged non-defaults: 12,709 (false positives).
-
-#### 4. **XGBoost with Tuned Hyperparameters**
-- Best parameters from GridSearchCV:
-  - `colsample_bytree`: 0.8, `learning_rate`: 0.2, `max_depth`: 7, `scale_pos_weight`: 1, `subsample`: 1.0.
-- Key evaluation metrics:
-  - **Precision**: 34% for default prediction.
-  - **Recall**: 26%, balancing precision and recall for practical application.
-  - **Accuracy**: 85.0%.
-  - **AUC-ROC**: 0.725, demonstrating better model discrimination for defaults.
-- Confusion Matrix:
-  - Defaults correctly identified: 2,544 (true positives).
-  - Non-defaults correctly identified: 69,210 (true negatives).
-  - Missed defaulters: 7,242 (false negatives).
-  - Incorrectly flagged non-defaults: 2,269 (false positives).
-
+# Key Observations
+### Logistic Regression Model
+1. **Imbalanced Dataset**:
+   - **Metrics**: Precision: 63%, Recall: 7%, Accuracy: 88.7%.
+   - **Strengths**: High precision for default predictions.
+   - **Weaknesses**: Very low recall, identifying only 7% of defaulters.
+   - **Confusion Matrix**:
+     - Defaults correctly identified: 531 (true positives).
+     - Non-defaults correctly identified: 56,103 (true negatives).
+     - Missed defaulters: 6896 (false negatives).
+     - Incorrectly flagged non-defaults: 307 (false positives).
+2. **Undersampling**:
+   - **Metrics**: Precision: 23%, Recall: 69%, Accuracy: 69.2%, F1-Score: 34%.
+   - **Strengths**: Significantly improved recall for defaulters, making it effective at identifying high-risk loans.
+   - **Weaknesses**: Trade-off in precision and increased false positives.
+   - **Confusion Matrix**:
+     - Defaults correctly identified: 5,102 (true positives).
+     - Non-defaults correctly identified: 39,102 (true negatives).
+     - Missed defaulters: 2,325 (false negatives).
+     - Incorrectly flagged non-defaults: 17,308 (false positives).
 ---
+### Random Forest Model
+1. **Imbalanced Dataset**:
+   - **Metrics**: Precision: 62%, Recall: 5%, Accuracy: 88.5%, F1-Score: 9%.
+   - **Strengths**: High precision and overall accuracy.
+   - **Weaknesses**: Recall remains very low, limiting its ability to identify defaulters.
+   - **Confusion Matrix**:
+     - Defaults correctly identified: 364 (true positives).
+     - Non-defaults correctly identified: 56185 (true negatives).
+     - Missed defaulters: 7,063 (false negatives).
+     - Incorrectly flagged non-defaults: 225 (false positives).
+2. **Oversampling**:
+   - **Metrics**: Precision: 22%, Recall: 66%, Accuracy: 68.8%, F1-Score: 33%.
+   - **Strengths**: Balanced dataset significantly improved recall.
+   - **Weaknesses**: Increased false positives reduced precision and accuracy.
+   - **Confusion Matrix**:
+     - Defaults correctly identified: 4,905 (true positives).
+     - Non-defaults correctly identified: 39,076 (true negatives).
+     - Missed defaulters: 2,522 (false negatives).
+     - Incorrectly flagged non-defaults: 17,334 (false positives).
+---
+### Decision Tree Model
+1. **Imbalanced Dataset**:
+   - **Metrics**: Precision: 20%, Recall: 24%, Accuracy: 80%, F1-Score: 22%.
+   - **Strengths**: Moderate recall improvement over Logistic Regression.
+   - **Weaknesses**: Precision and accuracy were affected due to imbalance.
+   - **Confusion Matrix**:
+     - Defaults correctly identified: 6,977 (true positives).
+     - Non-defaults correctly identified: 49,433 (true negatives).
+     - Missed defaulters: 5,675 (false negatives).
+     - Incorrectly flagged non-defaults: 1,752 (false positives).
+2. **Oversampling**:
+   - **Metrics**: Precision: 22%, Recall: 66%, Accuracy: 68.8%, F1-Score: 33%.
+   - **Strengths**: Balanced dataset improved recall significantly.
+   - **Weaknesses**: Increased false positives reduced precision.
+   - **Confusion Matrix**:
+     - Defaults correctly identified: 4,905 (true positives).
+     - Non-defaults correctly identified: 39,076 (true negatives).
+     - Missed defaulters: 2,522 (false negatives).
+     - Incorrectly flagged non-defaults: 17,334 (false positives).
+---
+### KNN Classifier
+1. **Imbalanced Dataset**:
+   - **Metrics**: Precision: 36%, Recall: 9%, Accuracy: 87.5%, F1-Score: 15%.
+   - **Strengths**: Moderate precision but very low recall limits effectiveness.
+   - **Confusion Matrix**:
+     - Defaults correctly identified: 677 (true positives).
+     - Non-defaults correctly identified: 55,231 (true negatives).
+     - Missed defaulters: 6,750 (false negatives).
+     - Incorrectly flagged non-defaults: 1,179 (false positives).
+2. **Undersampling**:
+   - **Metrics**: Precision: 18%, Recall: 63%, Accuracy: 62.6%, F1-Score: 28%.
+   - **Strengths**: Recall improved with undersampling.
+   - **Weaknesses**: Significant increase in false positives, reducing precision.
+   - **Confusion Matrix**:
+     - Defaults correctly identified: 4,649 (true positives).
+     - Non-defaults correctly identified: 35,309 (true negatives).
+     - Missed defaulters: 2,778 (false negatives).
+     - Incorrectly flagged non-defaults: 21,101 (false positives).
+---
+### XGBoost Classifier
+1. **Imbalanced Dataset**:
+   - **Metrics**: Precision: 55%, Recall: 8%, Accuracy: 88.5%, F1-Score: 14%.
+   - **Strengths**: High precision and overall accuracy.
+   - **Weaknesses**: Low recall limits its ability to identify defaulters.
+   - **Confusion Matrix**:
+     - Defaults correctly identified: 606 (true positives).
+     - Non-defaults correctly identified: 55,912 (true negatives).
+     - Missed defaulters: 6,821 (false negatives).
+     - Incorrectly flagged non-defaults: 498 (false positives).
+2. **Undersampling**:
+   - **Metrics**: Precision: 21%, Recall: 67%, Accuracy: 67.6%, F1-Score: 33%.
+   - **Strengths**: Balanced performance with improved recall.
+   - **Weaknesses**: Increased false positives.
+   - **Confusion Matrix**:
+     - Defaults correctly identified: 4,994 (true positives).
+     - Non-defaults correctly identified: 38,165 (true negatives).
+     - Missed defaulters: 2,433 (false negatives).
+     - Incorrectly flagged non-defaults: 18,245 (false positives).
+---
+## Summary of Models:
+1. **Best Model Overall**: Logistic Regression with Undersampling:
+   - **Metrics**: Precision: 23%, Recall: 69%, Accuracy: 69.2%, F1-Score: 34%.
+   - **Reason**: Achieved the best balance between recall and precision while maintaining acceptable accuracy.
+2. **Best Recall**: Logistic Regression with Undersampling (69%).
+3. **Trade-offs**:
+   - Models like XGBoost with undersampling provided comparable recall but suffered from lower precision and increased false positives.
 
-These observations reflect the trade-offs inherent in imbalanced classification tasks. SMOTE and SMOTEENN resampling techniques improved recall significantly, while tuning hyperparameters enhanced the model's balance and AUC-ROC score. The chosen approach depends on the lender's priorities between minimizing false negatives and maintaining precision.
+--- 
 
+### Final Recommendation:
+
+Logistic Regression with Undersampling is the most effective model for this task, given its balanced metrics and ability to identify a higher proportion of defaulters without sacrificing too much precision or accuracy.
 
 ---
 
 ## Visualizations
 
-### 1. XGBoost Model Performance
+### Model Performance Comparisons
 
-The charts below provide an overall picture of the work done with XGBoost across different approaches to handle the class imbalance in the dataset. Each approach's impact on accuracy, precision, recall, and F1-score is compared, alongside a confusion matrix showing the results of the best-performing model.
-
-#### Performance Metrics Comparison
-![XGBoost Performance Comparison](images/best_xg_boost_nosamp_smote_scalepos_smoteen.png)
-
-- **Accuracy Comparison**: The accuracy decreases slightly when using resampling techniques (e.g., SMOTE and SMOTEENN) compared to no sampling, as these techniques aim to improve recall rather than prioritize accuracy.
-- **Recall Comparison**: The best recall for identifying defaults (Class 1) is achieved using **Scale Pos Weight**, significantly outperforming other methods, including SMOTE and SMOTEENN.
-- **Precision Comparison**: No sampling results in higher precision, but this comes at the cost of poor recall.
-- **F1-Score Comparison**: **Scale Pos Weight** provides a balanced trade-off between precision and recall, making it the most effective approach for handling defaults.
-
-#### Confusion Matrix for Best Model (Scale Pos Weight)
-![Confusion Matrix - Scale Pos Weight](images/xg_boost_scaleposweight.png)
-
-- The confusion matrix for **Scale Pos Weight** demonstrates a strong ability to identify defaults:
-  - **True Positives (Defaults correctly identified)**: 5,493.
-  - **False Negatives (Defaults missed)**: 3,403.
-  - **True Negatives (Non-defaults correctly identified)**: 49,725.
-  - **False Positives (Non-defaults misclassified)**: 17,984.
-- While there is a moderate number of false positives, the significant improvement in true positives justifies the trade-off, especially given the business goal of minimizing loan defaults.
+The following charts and confusion matrices showcase the performance of various models tested during the project. Each model is evaluated under different techniques (e.g., undersampling and oversampling) to handle the class imbalance present in the dataset. The models compared include Logistic Regression, Decision Tree, Random Forest, KNN, and XGBoost.
 
 ---
 
-### Summary:
-The visualizations clearly indicate that **Scale Pos Weight** is the most effective method for handling imbalanced data when using XGBoost. It provides the highest recall, ensuring that more defaulters are correctly identified, which aligns with the business objective of minimizing bad loans. Although precision decreases slightly, the overall F1-score demonstrates a balanced performance, making it the preferred approach for this dataset.
+### 1. Logistic Regression (Best Model)
 
-These insights are critical for lenders, as they highlight the importance of recall in identifying risky loans, even at the cost of accepting a higher number of false positives.
+#### **Performance Metrics Comparison**
+- **Undersampling**:
+  - **Precision**: 23%
+  - **Recall**: 69%
+  - **Accuracy**: 69.2%
+  - **F1-Score**: 34%
+  - **Key Strengths**: Achieved the best recall among all models while maintaining a good balance between precision and F1-score. This makes it the most effective model for identifying high-risk loans.
+  - **Key Weaknesses**: Increased false positives due to the focus on improving recall.
+
+#### **Confusion Matrix for Logistic Regression (Undersampling)**
+![Logistic Regression Confusion Matrix](images/confusion-matrix/logistic_regression_undersampling_confusion_matrix.png)
 
 ---
 
+### 2. Random Forest
 
----
-### Final Recommendation:
+#### **Performance Metrics Comparison**
+- **Oversampling**:
+  - **Precision**: 22%
+  - **Recall**: 66%
+  - **Accuracy**: 68.8%
+  - **F1-Score**: 33%
+  - **Key Strengths**: Balanced performance with strong recall improvement.
+  - **Key Weaknesses**: Increased false positives, reducing precision and overall accuracy.
 
-The best model after numerous iterations is Logistic Regression and 
-OverSampling.
-
+#### **Confusion Matrix for Random Forest (Oversampling)**
+![Random Forest Confusion Matrix](images/confusion-matrix/random_forest_oversampling_confusion_matrix.png)
 
 
 ---
 
-## Future Opportunities
+### 3. Decision Tree
 
-### 1. Enhanced Data Segmentation
-- The dataset can be segmented into risk categories, such as **high-risk**, **average-risk**, and **low-risk** borrowers, based on metrics like FICO scores, Debt-to-Income (DTI) ratios, and loan purpose.
-- Each segment could be analyzed separately to tailor risk models, optimize lending strategies, and fine-tune credit offerings.
+#### **Performance Metrics Comparison**
+- **Oversampling**:
+  - **Precision**: 22%
+  - **Recall**: 66%
+  - **Accuracy**: 68.8%
+  - **F1-Score**: 33%
+  - **Key Strengths**: Improved recall through oversampling, capturing a significant proportion of defaults.
+  - **Key Weaknesses**: Moderate precision due to a higher rate of false positives.
 
-### 2. Integration of External Data
-- Incorporate external data sources, such as macroeconomic indicators (e.g., unemployment rates, GDP trends) and geographic data (e.g., regional economic conditions), to enhance the predictive power of models.
-- Integrating behavioral data, such as payment history and spending patterns, could add valuable context to risk assessments.
-
-### 3. Real-Time Risk Monitoring
-- Develop models that dynamically update borrower risk scores using real-time data. For example:
-  - Monitor sudden changes in credit behavior or economic conditions to identify emerging risks.
-  - Use these updates to adjust lending terms or flag potential defaults proactively.
-
-### 4. Model Explainability
-- Implement Explainable AI (XAI) techniques to increase transparency in lending decisions:
-  - Use tools like SHAP (SHapley Additive exPlanations) to provide clear, borrower-specific explanations for loan approvals or denials.
-  - Ensure fairness and regulatory compliance while improving customer trust.
-
-### 5. Stress Testing and Scenario Analysis
-- Conduct scenario analysis to test how models perform under different economic conditions, such as recessions or market booms.
-- Use stress testing to refine lending strategies and prepare for adverse financial environments.
-
-### 6. Interactive Insights Dashboards
-- Create interactive dashboards for stakeholders to:
-  - Visualize model predictions, default probabilities, and portfolio performance.
-  - Offer tools for filtering and analyzing borrower data to identify trends and actionable insights.
-
-### 7. Expanding Model Applications
-- Extend these predictive methods to other loan types, including:
-  - Mortgages, business loans, and auto loans.
-  - Payday advances and short-term loans, which may require different risk modeling approaches.
-
-### 8. Continuous Model Updates
-- Monitor and retrain models regularly to prevent drift and maintain accuracy:
-  - Incorporate new borrower behavior data and updated economic conditions.
-  - Ensure models remain effective and relevant over time.
+#### **Confusion Matrix for Decision Tree (Oversampling)**
+![Decision Tree Confusion Matrix](images/confusion-matrix/decision_tree_oversampling_confusion_matrix.png)
 
 ---
 
-## License
+### 4. KNN Classifier
+
+#### **Performance Metrics Comparison**
+- **Undersampling**:
+  - **Precision**: 18%
+  - **Recall**: 63%
+  - **Accuracy**: 62.6%
+  - **F1-Score**: 28%
+  - **Key Strengths**: Moderate recall improvement with undersampling.
+  - **Key Weaknesses**: Very low precision due to a high rate of false positives.
+
+#### **Confusion Matrix for KNN (Undersampling)**
+![KNN Confusion Matrix](images/confusion-matrix/knn_undersampling_confusion_matrix.png)
+
+---
+
+### 5. XGBoost
+
+#### **Performance Metrics Comparison**
+- **Undersampling**:
+  - **Precision**: 21%
+  - **Recall**: 67%
+  - **Accuracy**: 67.6%
+  - **F1-Score**: 33%
+  - **Key Strengths**: Balanced recall improvement.
+  - **Key Weaknesses**: Lower precision and increased false positives compared to Logistic Regression.
+
+#### **Confusion Matrix for XGBoost (Undersampling)**
+![XGBoost Confusion Matrix](images/confusion-matrix/xgboost_undersampling_confusion_matrix.png)
+
+---
+
+# Observations and Key Takeaways
+
+## Strengths and Weaknesses by Model
+
+- **Logistic Regression (Undersampling)**:  
+  - **Strengths**: Achieved the highest recall (69%) among all models, making it the most effective at identifying defaulters. It maintained a reasonable trade-off with precision (23%) and F1-score (34%). The simplicity and interpretability of Logistic Regression also make it ideal for business applications.
+  - **Weaknesses**: Increased false positives due to the focus on improving recall, which slightly reduced overall accuracy.
+ 
+- **Random Forest (Oversampling)**:  
+  - **Strengths**: Provided a good balance of recall (66%) and F1-score (33%). Its ensemble nature improves prediction stability.  
+  - **Weaknesses**: While recall was high, the increased false positives made it less precise, and the complexity of the model can hinder interpretability for stakeholders.
+
+- **Decision Tree (Oversampling)**:  
+  - **Strengths**: Improved recall (66%) and F1-score (33%) compared to the baseline Logistic Regression model. Oversampling helped balance the dataset and identify more defaulters.  
+  - **Weaknesses**: Moderate precision (22%) led to an increase in false positives, reducing its reliability compared to Logistic Regression.
+
+- **KNN (Undersampling)**:  
+  - **Strengths**: Moderate recall (63%) with a simple, interpretable algorithm.  
+  - **Weaknesses**: Low precision (18%) and F1-score (28%) due to a high rate of false positives. KNN underperformed compared to both Logistic Regression and Random Forest.
+
+- **XGBoost (Undersampling)**:  
+  - **Strengths**: Balanced recall (67%) and F1-score (33%) compared to KNN. The model handles complex relationships effectively.  
+  - **Weaknesses**: Lower precision (21%) and increased complexity compared to Logistic Regression make it less practical for real-world implementation.
+
+---
+
+## Recommendations
+
+1. **Adopt Logistic Regression (Undersampling)**:  
+   - Logistic Regression with undersampling consistently outperformed other models in terms of recall, precision, and profitability. Its simplicity and interpretability make it ideal for lending decisions where identifying defaulters is critical.  
+
+2. **Continuous Improvement**:  
+   - **Threshold Tuning**: Adjust thresholds to further refine the balance between recall and precision, aligning with business objectives.  
+   - **Model Retraining**: Periodically retrain the model using updated data to adapt to changing borrower behaviors.
+
+3. **Validate Financial Outcomes**:  
+   - Use the **Predicted Profit Analysis Tool** to validate the model's profitability periodically. Ensure that the tool incorporates updated interest rates and funding costs to reflect real-world conditions.
+
+4. **Monitor Business Metrics**:  
+   - Track metrics such as default rates, profitability, and customer retention to ensure the model delivers sustainable business outcomes.
+
+---
+
+## Final Recommendation: Logistic Regression (Undersampling)
+
+Logistic Regression with undersampling demonstrated the best overall performance by delivering the highest interest income and loan yield. After comprehensive evaluations, **Logistic Regression with Undersampling** emerged as the top-performing model. This determination was based on a detailed analysis of classification metrics (recall, precision, F1-score, and accuracy) combined with real-world financial insights derived from the **Predicted Profit Analysis Tool**.
+
+
+---
+
+### Why Logistic Regression with Undersampling Is Recommended
+
+#### 1. Performance Metrics:
+- **Recall**: Achieved the highest recall (69%) among all models, ensuring a significant proportion of defaulters are correctly identified.  
+- **Precision**: Although precision (23%) was lower than other models, it was an acceptable trade-off for the improved recall, which minimizes missed defaults.  
+- **F1-Score**: Delivered a balanced F1-score (34%), highlighting an effective trade-off between recall and precision.  
+- **Accuracy**: Maintained a reasonable accuracy (69.2%), demonstrating that the model performed well overall despite the focus on recall.
+
+#### 2. Financial Model Insights:
+- The **Predicted Profit Analysis Tool** revealed that Logistic Regression with Undersampling consistently delivered the highest net yield and profitability compared to other models.  
+- By prioritizing recall, the model successfully reduced losses from defaults, leading to maximized income from approved loans and improved profitability.
+
+#### 3. Business Application:
+- The simplicity and interpretability of Logistic Regression make it an excellent choice for stakeholders who require transparent, actionable insights into lending decisions.  
+- The model’s efficiency ensures rapid deployment and scalability across various lending portfolios, making it practical for real-world business applications.
+
+### Predicted Profit Analysis Tool
+
+#### Overview
+
+The **Predicted Profit Analysis Tool (PPA)** evaluates the financial viability of machine learning models applied to loan default predictions. By analyzing key metrics derived from confusion matrix outputs, it identifies the model that delivers the best balance between accuracy, recall, and profitability.
+
+---
+
+#### Features
+
+1. **Standardized Financial Metrics**:  
+   - Ensures fair model evaluation by standardizing metrics such as total loans, interest income, and loan yield.
+
+2. **Model Evaluation**:  
+   - Compares machine learning models (e.g., Logistic Regression, Random Forest, XGBoost, Decision Tree, KNN) based on their ability to maximize recall while maintaining profitability.
+
+3. **Profitability Assessment**:  
+   - Highlights the best-performing model and its potential to maximize returns while minimizing loan defaults.
+
+
+
+---
+
+### Logistic Regression - Undersampling
+
+|                     | Predicted N (Negative) | Predicted P (Positive) |
+|---------------------|------------------------|------------------------|
+| **Actual N (Non-default)** | 39,102                 | 17,308                 |
+| **Actual P (Default)**      | 2,325                  | 5,102                  |
+
+**Predicted Accuracy**: 0.69  
+**Predicted Precision**: 0.23  
+**Predicted Recall**: 0.69  
+
+---
+
+### Predicted Profit Analysis (PPA)
+
+|                     | Non-default (0) | Default (1)  |
+|---------------------|-----------------|--------------|
+| **Actual**          | 39,102          | 2,325        |
+
+**Interest Rate**: 13%  
+**Interest Income**: $5.083M  
+**Before Cost of Deposit**: $2.758M  
+
+|                     |                  |
+|---------------------|------------------|
+| **Yield**           | 6.66%           |
+| **Cost of Fund (Deposits)** | 4.00%           |
+| **Net Yield**       | 2.66%           |
+
+
+---
+
+#### Predicted Profit Analysis Results
+
+| Model                   | Sampling      | Accuracy | Precision | Recall | Int. Income ($M) | Loan Yield (%) |
+|-------------------------|---------------|----------|-----------|--------|------------------|----------------|
+| **Logistic Regression** | Undersampling | **0.69**     | **0.23**      | **0.69**   | **2.758**        | **6.66**       |
+| **Random Forest**       | Oversampling  | 0.69     | 0.22      | 0.66   | 2.558            | 6.15           |
+| **Decision Tree**       | Oversampling  | 0.69     | 0.22      | 0.66   | 2.558            | 6.15           |
+| **KNN**                 | Undersampling | 0.63     | 0.18      | 0.61   | 1.812            | 4.76           |
+| **XGBoost**             | Undersampling | 0.68     | 0.21      | 0.67   | 2.528            | 6.23           |
+
+
+---
+This tool validated the project’s hypothesis, affirming **Logistic Regression with Undersampling** as the optimal model to minimize loan defaults and maximize financial stability.
+
+---
+
+#### Observations and Recommendations
+
+1. **Best Model: Logistic Regression (Undersampling)**  
+   - **Highest Recall (0.69)**: Identifies the highest proportion of actual defaulters.
+   - **Highest Interest Income ($2.758M)**: Maximizes profitability by minimizing the financial losses from defaults.
+   - **Best Loan Yield (6.66%)**: Offers the best return on loans approved.
+
+2. **Other Models**:
+   - **XGBoost**: Achieves comparable recall but slightly lower profitability ($2.528M).  
+   - **KNN**: Demonstrates weaker recall (0.61) and loan yield (4.76%), making it less viable.  
+   - **Random Forest & Decision Tree**: Similar performance metrics but fall short in profitability compared to Logistic Regression.
+
+3. **Recommendation**:  
+   Adopt **Logistic Regression with Undersampling** as the primary model for predicting loan defaults. Its simplicity, high recall, and profitability make it the most effective choice for minimizing risks while maximizing financial returns.
+
+---
+
+#### Key Metrics Explained
+
+1. **Accuracy**: The overall percentage of correct predictions.
+2. **Precision**: The proportion of predicted defaults that were actual defaults.
+3. **Recall**: The proportion of actual defaults correctly predicted (most critical metric for this task).  
+4. **Interest Income**: Revenue generated from non-defaulting loans.  
+5. **Loan Yield**: Interest income as a percentage of total loans issued.
+
+---
+
+#### Why Logistic Regression with Undersampling?
+
+1. **Superior Recall**: The highest recall ensures that the majority of defaulters are accurately identified, minimizing financial risks.  
+2. **Profitability**: The model delivers the highest interest income and loan yield, making it the most viable for practical deployment.  
+3. **Interpretability**: Logistic Regression’s simplicity aids in stakeholder communication and operational integration.
+
+---
+
+##  MIT License
 
 This project is licensed under the MIT License. The dataset and analysis are provided for **educational purposes only** and are intended to demonstrate machine learning techniques for academic and learning use cases.
 
 **Disclaimer**: This project is not designed for commercial or production use in financial decision-making. Users are advised not to rely on this analysis for real-world lending or credit risk evaluation.
-
-### MIT License
-
-
 
 [Back to Top](#table-of-contents)
