@@ -3,7 +3,7 @@
 <h1 style="font-size: 3em;">Predicting Loan Default</h1>  
 <h2 style="font-size: 2em;">A Machine Learning Model and Analysis</h2>
 
-<img src="images/bank_loan_intro.png" alt="Bank Loans Using Machine Learning" style="width:100%; height:500px; object-fit:cover;">
+<img src="images/bank_default_intro.png" alt="Bank Loans Using Machine Learning" style="width:100%; height:500px; object-fit:cover;">
 
 </div>
 
