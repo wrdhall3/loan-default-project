@@ -275,11 +275,8 @@ To identify the best classification model and preprocessing approach, we followe
 
 ---
 
-This methodology provided a robust framework for analyzing loan defaults, enabling the selection of models that balance recall, precision, and accuracy to meet business objectives effectively.
+# Comprehensive Model Evaluation and Key Observations
 
----
-
-# Key Observations
 ### Logistic Regression Model
 1. **Imbalanced Dataset**:
    - **Metrics**: Precision: 63%, Recall: 7%, Accuracy: 88.7%.
@@ -389,7 +386,7 @@ This methodology provided a robust framework for analyzing loan defaults, enabli
 
 --- 
 
-### Final Recommendation:
+### Recommendation:
 
 Logistic Regression with Undersampling is the most effective model for this task, given its balanced metrics and ability to identify a higher proportion of defaulters without sacrificing too much precision or accuracy.
 
@@ -399,7 +396,7 @@ Logistic Regression with Undersampling is the most effective model for this task
 
 ### Model Performance Comparisons
 
-The following charts and confusion matrices showcase the performance of various models tested during the project. Each model is evaluated under different techniques (e.g., undersampling and oversampling) to handle the class imbalance present in the dataset. The models compared include Logistic Regression, Decision Tree, Random Forest, KNN, and XGBoost.
+The following charts and confusion matrices showcase the performance of various models tested during the project. Each model is evaluated under different techniques (e.g., undersampling and oversampling) to handle the class imbalance present in the dataset. The models compared include **Logistic Regression**, **Decision Tree**, **Random Forest**, **KNN**, and **XGBoost**.
 
 ---
 
@@ -484,6 +481,20 @@ The following charts and confusion matrices showcase the performance of various 
 
 ---
 
+### Model Comparison: Quick Overview
+
+| Model                   | Accuracy | Precision (Class 1) | Recall (Class 1) | F1-Score (Class 1) |
+|-------------------------|----------|----------------------|------------------|--------------------|
+| **Logistic Regression (Undersampling)** | 69%      | 23%                 | 69%               | 34%               |
+| **Random Forest (Oversampling)**        | 69%      | 22%                 | 66%               | 33%               |
+| **Decision Tree (Oversampling)**        | 69%      | 22%                 | 66%               | 33%               |
+| **KNN (Undersampling)**                 | 63%      | 18%                 | 61%               | 28%               |
+| **XGBoost (Undersampling)**             | 68%      | 21%                 | 67%               | 32%               |
+
+![Best Model and Sampling Approach](images/all_models_bar_chart_comparison.png)
+
+---
+
 # Observations and Key Takeaways
 
 ## Strengths and Weaknesses by Model
@@ -549,6 +560,8 @@ Logistic Regression with undersampling demonstrated the best overall performance
 #### 3. Business Application:
 - The simplicity and interpretability of Logistic Regression make it an excellent choice for stakeholders who require transparent, actionable insights into lending decisions.  
 - The model’s efficiency ensures rapid deployment and scalability across various lending portfolios, making it practical for real-world business applications.
+
+---
 
 ### Predicted Profit Analysis Tool
 
